@@ -1,0 +1,28 @@
+<div class="container" style="margin:1vw 50px 0;">
+    <div class="row">
+        <div class="col-6 text-left">
+                <%= flash[:notice] %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center">
+            <h5 class="bg-info text-white rounded p-1 mt-5">歯磨き粉新規登録・一覧</h5>
+        </div>
+    </div>
+</div>
+	<%= form_for(@paste,url:admins_pastes_path) do |f| %>
+	<%= f.label :tooth_paste_name,"歯磨き粉の製品名" %>
+	<%= f.text_field :tooth_paste_name, class:"form-control" %>
+	<%= f.attachment_field :image %>
+    <%= f.label :price, "値段" %>
+    <%= f.number_field :price, class:"form-control" %>
+	<%= f.label :genre_id,"ジャンル" %>
+	<%= f.collection_select :genre_id, Genre.all,:id,:genre_name ,class:"btn"%>
+	<%= f.submit "新規登録" %>
+	<% end %>
+
+<% @pastes.each do |paste| %>
+<%= attachment_image_tag(paste, :image, size: '100x100') %>
+<%= paste.tooth_paste_name %>
+<%= paste.price %>円<br>
+<% end %>

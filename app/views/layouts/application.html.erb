@@ -10,6 +10,42 @@
   </head>
 
   <body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:right;">
+        <%#= link_to '歯磨き粉'', admins_path, class:"navbar-brand" %>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+            <li class="nav-item mr-4">
+              <%= link_to "歯磨き粉登録", new_admins_paste_path, class: "btn text-light", style: "background-color: right;" %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to "おすすめ登録", new_admins_admin_recommend_path, class: "btn text-light", style: "background-color: right;" %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to "おすすめ一覧", admins_admin_recommends_path,  class: "btn text-light", style: "background-color: right;" %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to "ジャンル登録", admins_genres_path, class: "btn text-light", style: "background-color: right;" %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: "btn text-light", style: "background-color: right;" %>
+            </li>
+            <% else %>
+            <li class="nav-item mr-4">
+              <h3>運営者ログインページ</h3>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+  </header>
+
+
+
+
+
+
     <%= yield %>
   </body>
 </html>

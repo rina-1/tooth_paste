@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tooth_paste_name: MyString
+  image: MyString
+
+two:
+  tooth_paste_name: MyString
+  image: MyString

@@ -1,0 +1,35 @@
+<div class="container" style="margin:1vw 50px 0;">
+    <div class="row">
+        <div class="col-6 text-left">
+                <%= flash[:notice] %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 text-center">
+            <h5 class="bg-info text-white rounded p-1 mt-5">おすすめ新規登録</h5>
+        </div>
+    </div>
+</div>
+
+<%= search_form_for(@q,url:new_admins_admin_recommend_path, method: :get,  local:true) do |f| %>
+  <%= f.label :tooth_paste_name, "Keyword" %>
+  <%= f.search_field :tooth_paste_name_cont %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price_gteq %>以上〜
+  <%= f.number_field :price_lt %>未満
+
+  <%= f.label :genre_genre_name, "ジャンル名" %>
+  <%= f.collection_select :genre_genre_name_eq, @genres, :id, :genre_name, {class: 'form-control'} %>
+  <%# genre_genre_name_eq → モデル名_カラム名_eq（ransackの書き方） %>
+  <%= f.submit "検索" %>
+<% end %>
+
+
+<% @paste.each do |paste| %>
+<%= attachment_image_tag(paste, :image, size: '100x100') %>
+<%= paste.genre.genre_name %>
+<%= paste.tooth_paste_name %>
+<%= paste.price %>
+<br>
+<% end %>
