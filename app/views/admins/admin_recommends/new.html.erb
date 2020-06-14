@@ -20,7 +20,7 @@
   <%= f.number_field :price_lt %>未満
 
   <%= f.label :genre_genre_name, "ジャンル名" %>
-  <%= f.collection_select :genre_genre_name_eq, @genres, :id, :genre_name, {class: 'form-control'} %>
+  <%= f.collection_select :genre_genre_name_eq, @genres, :genre_name, :genre_name, {class: 'form-control'} %>
   <%# genre_genre_name_eq → モデル名_カラム名_eq（ransackの書き方） %>
   <%= f.submit "検索" %>
 <% end %>
@@ -31,5 +31,17 @@
 <%= paste.genre.genre_name %>
 <%= paste.tooth_paste_name %>
 <%= paste.price %>
+<%= link_to "詳細はこちら", hoge_path(paste.id) %>
+<input type="text">
+<button>send</button>
 <br>
 <% end %>
+
+
+<%# controller内で定義する　csvファイルを選択→保存ボタン押したとき、csvの内容がテーブルに保存される %>
+<%# CSV.foreach('/path/to/future_gadgets.csv') do |fg|
+  # fgはArrayクラス
+  paste = Paste.new(name: fg[0], price: fg[1])
+  paste.save
+  # puts "[#{fg[0]}] #{fg[1]}: #{fg[2]}"
+end %>

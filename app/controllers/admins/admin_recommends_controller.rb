@@ -2,7 +2,6 @@ class Admins::AdminRecommendsController < ApplicationController
     def new
         @genres = Genre.all
         @recommend = AdminRecommend.new
-
         @q = Paste.ransack(params[:q])
         @paste = @q.result(distinct: true)
     end

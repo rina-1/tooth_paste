@@ -17,7 +17,7 @@
     <%= f.label :price, "値段" %>
     <%= f.number_field :price, class:"form-control" %>
 	<%= f.label :genre_id,"ジャンル" %>
-	<%= f.collection_select :genre_id, Genre.all,:id,:genre_name ,class:"btn"%>
+	<%= f.collection_select :genre_id, Genre.all, :genre_name, :genre_name ,class:"btn"%>
 	<%= f.submit "新規登録" %>
 	<% end %>
 
