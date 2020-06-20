@@ -47,7 +47,7 @@ Devise.setup do |config|
   # find_for_authentication method and considered in your model lookup. For instance,
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
-  # config.request_keys = []
+  # config.request_keys = [:name]
 
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
@@ -296,4 +296,20 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_KEY']
+  config.omniauth :google_oauth2, ENV['GOOGLE_ID'], ENV['GOOGLE_KEY']
+  
+  # メガネくんから教えてもらったコード
+  # require 'devise/orm/active_record'
+  # config.omniauth :google_oauth2,
+  #                 ENV['GOOGLE_ID'], # 環境変数に先ほど控えたクライアントIDを入れておく
+  #                 ENV['GOOGLE_KEY'], # 環境変数に先ほど控えたシークレットを入れておく
+  #                 name: :google,
+  #                 scope: %w(email) 
+
+
+
+
+
 end

@@ -1,6 +1,41 @@
 Rails.application.routes.draw do
   root 'homes#top'
-  devise_for :users
+  # get 'auth/:provider/callback', to: 'sessions#create'
+  # get '/logout', to: 'sessions#destroy'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+   devise_scope :user do
+    # get '/users/sign_in' => 'users/sessions#new', as: 'new_user_session'
+    # # post '/users/sign_in' => 'users/sessions#create', as: 'user_session'
+    # delete '/users/sign_out' => 'users/sessions#destroy', as: 'destroy_user_session'
+    # get '/users/sign_up' => 'users/registrations#new', as: 'new_user_registration'
+    get '/users/passwords/edit' => 'users/registrations#edit', as: 'password_edit_registrations'
+    patch '/users/passwords/update' => 'users/registrations#update'
+    # post 'users/sign_up' => 'users/registrations#create', as: 'user_registration'
+    # get '/users/' => 'users/passwords#edit', as: 'edit_user_password'
+    # patch '/users/passwords' => 'users/passwords#update', as: 'user_password'
+    get '/users/passwords/new' => 'users/passwords#new',as: 'user_forgot_password'
+   end
+
+# メガネくんから教えてもらったコード
+  # devise_for :users <- コメントアウトするか消しちゃいます
+  # devise_for :users, controllers: {
+  #     omniauth_callbacks: "users/omniauth_callbacks"
+  # }
+
+
+
+  namespace :users do
+    get 'users/select' => 'user_favorites#select', as: 'select_user_favorite'
+    get 'users/new/:id' => 'user_favorites#new', as: 'new_user_favorite'
+    resources :user_favorites, only:[:create, :show, :edit, :update, :destroy]
+
+    resources :pastes
+  end
+  # resources :pastes do
+  #   resources :user_favorites
+  # end
+
+
   devise_for :admins, skip: :all
     devise_scope :admin do
       get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
@@ -10,7 +45,9 @@ Rails.application.routes.draw do
   authenticated :admin do
     namespace :admins do
       resources :genres, only:[:index, :create]
-      resources :pastes, only:[:new, :create]
+      resources :pastes, only:[:new, :create, :edit, :update, :destroy] do
+        collection { post :import }
+      end
       resources :admin_recommends, only:[:index, :new, :create, :edit, :update, :destroy]
     end
   end

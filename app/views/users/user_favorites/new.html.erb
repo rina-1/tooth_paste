@@ -1,0 +1,13 @@
+userおすすめ歯磨き粉選択後
+コメント記入ページ<br>
+<%= attachment_image_tag(@paste, :image, size: '100x100') %><br>
+<%= @paste.genre.genre_name %><br>
+<%= @paste.tooth_paste_name %><br>
+<%= @paste.price %>円<br>
+
+<%# コメント記入用 %>
+<%= form_for(@comment, url:users_user_favorites_path) do |f| %>
+<%= f.text_area :comment, class:"form-control",placeholder:"コメントをここに"%>
+<%= f.hidden_field :paste_id, :value => @paste.id %>
+<%= f.submit "登録する" %>
+<% end %>

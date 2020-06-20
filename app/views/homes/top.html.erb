@@ -4,3 +4,16 @@ admin?
 <%= link_to 'admin', new_admin_session_path %><br>
 user?
 user_link
+<%# <%  if logged_in? %>
+  <%#= link_to 'ログアウト', logout_path %> 
+<%# <% else %>
+  <%# <%= link_to 'facebookでログイン', 'auth/facebook/callback' %>
+  <%# <%= link_to 'googleでログイン', 'auth/google_oauth2/callback' %> 
+
+  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+  <%= link_to 'emailでログイン', new_user_session_path %>
+<%# <% end %>
+
+<%# メガネくんから教えてもらったコード %>
+<%# <%= link_to 'Signin with Google', user_omniauth_authorize_path(:google) %> %>

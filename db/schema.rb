@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_070137) do
+ActiveRecord::Schema.define(version: 2020_06_15_081458) do
 
   create_table "admin_recommends", force: :cascade do |t|
     t.text "comment"
@@ -49,6 +49,26 @@ ActiveRecord::Schema.define(version: 2020_06_11_070137) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_pastes_on_genre_id"
+  end
+
+  create_table "social_profiles", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_social_profiles_on_user_id"
+  end
+
+  create_table "user_favorites", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "paste_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["paste_id"], name: "index_user_favorites_on_paste_id"
+    t.index ["user_id"], name: "index_user_favorites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

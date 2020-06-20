@@ -1,28 +1,77 @@
-<div class="container" style="margin:1vw 50px 0;">
+<div class="container" style="margin:0 50px 0;">
     <div class="row">
         <div class="col-6 text-left">
                 <%= flash[:notice] %>
         </div>
     </div>
     <div class="row">
-        <div class="col-3 text-center">
-            <h5 class="bg-info text-white rounded p-1 mt-5">歯磨き粉新規登録・一覧</h5>
+        <div class="col-5 text-center">
+            <h5 class="bg-info text-white rounded p-1 mt-5">歯磨き粉新規登録・一覧・編集</h5>
         </div>
     </div>
 </div>
-	<%= form_for(@paste,url:admins_pastes_path) do |f| %>
-	<%= f.label :tooth_paste_name,"歯磨き粉の製品名" %>
-	<%= f.text_field :tooth_paste_name, class:"form-control" %>
-	<%= f.attachment_field :image %>
-    <%= f.label :price, "値段" %>
-    <%= f.number_field :price, class:"form-control" %>
-	<%= f.label :genre_id,"ジャンル" %>
-	<%= f.collection_select :genre_id, Genre.all, :genre_name, :genre_name ,class:"btn"%>
-	<%= f.submit "新規登録" %>
-	<% end %>
+<div class="container text-center">
+    <%= form_for(@paste,url:admins_pastes_path) do |f| %>
+        <div class="row">
+            <div class="col-6 row">
+                <div class="col-4 text-left"><%= f.label :genre_id,"ジャンル" %></div>
+                <div class="col-8 text-left"><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {}, {class: "form-control"} %></div>
+                <div class="col-4 text-left my-2"><%= f.label :tooth_paste_name,"歯磨き粉の製品名" %></div>
+                <div class="col-8 my-2"><%= f.text_field :tooth_paste_name, class:"form-control" %></div>
+                <div class="col-4 text-left"><%= f.label :price, "値段" %></div>
+                <div class="col-8"><%= f.number_field :price, class:"form-control" %></div>
+                <div class="col-7 text-left my-2"><%= f.attachment_field :image %></div>
+                <div class="col-6 text-left"><%= f.submit "新規登録" %></div>
+            </div>
+    <% end %> 
+            <div class="col-6 row">
+                <div class="col-9 text-left offset-2">csvで歯磨き粉一括登録する</div>
+                <div class="col-9 text-left offset-2">
+                    <%= form_tag import_admins_pastes_path, multipart: true do %>
+                    <%= file_field_tag :file %>
+                </div>
+                <div class="col-9 text-left offset-2"><%= submit_tag "インポート" %></div>
+                    <% end %>
+            </div>
+        </div>
+</div>
+     
 
-<% @pastes.each do |paste| %>
-<%= attachment_image_tag(paste, :image, size: '100x100') %>
-<%= paste.tooth_paste_name %>
-<%= paste.price %>円<br>
-<% end %>
+
+<div class="container " style="margin:30px 50px 0;">
+    <div class="row justify-content-center">
+        <table class='table'>
+            <thead>
+            <tr class="text-center col-12 row">
+                <th class="col-2">画像</th>
+                <th class="col-3">ジャンル名</th>
+                <th class="col-5">製品名</th>
+                <th class="col-2">値段</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @pastes.each do |paste| %>
+                     <%= form_for(paste, url:admins_paste_path(paste), method: :patch) do |f| %>
+            <tr class="col-12 row">
+                    <td class="text-center col-2">
+                        <%= attachment_image_tag(paste, :image, size: '100x100') %><br>
+                        <%= f.attachment_field :image %>
+                    </td>
+                    <td class="text-center col-3"><%= paste.genre.genre_name %><br><br>
+                        <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {}, {class: 'form-control'}%>
+                    </td>
+                    <td class="text-center col-5"><%= paste.tooth_paste_name %><br><br>
+                        <%= f.text_field :tooth_paste_name, class:"form-control" %>
+                    </td>
+                    <td class="text-center col-2"><%= paste.price %>円<br><br>
+                        <%= f.text_field :price, class:"form-control" %></td>
+                    <td class="align-bottom col-2"><%= f.submit "更新する" %></td>
+                    <td class="align-bottom col-2"><%= link_to "削除", admins_paste_path(paste),method: :delete%></td>    
+                    <% end %>
+            </tr>
+            <% end %>
+            </tbody>
+        </table> 
+        <%= paginate @pastes %>
+    </div>
+</div>

@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
 
  /* 画像使う場合プリコンパイル後に対応できるように url → image-url と記述*/
  /* body {

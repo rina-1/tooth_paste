@@ -1,0 +1,12 @@
+userマイページ
+お気に入り一覧表示
+<%= current_user.name %>
+
+<%= @user_favorites.each do |favorite| %>
+<%= attachment_image_tag(favorite.paste, :image, size: '100x100') %>
+ジャンル:<%= favorite.paste.genre.genre_name %>
+製品名:<%= favorite.paste.tooth_paste_name %>
+値段:<%= favorite.paste.price %>
+コメント内容:<%= favorite.comment %><br>
+<%= link_to "Edit", edit_users_user_favorite_path(favorite), class: "btn-sm btn-success" %>
+<% end %>

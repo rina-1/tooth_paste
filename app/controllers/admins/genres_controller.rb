@@ -11,7 +11,7 @@ class Admins::GenresController < ApplicationController
             # =redirect_to request.refererも該当ページに遷移する直前に閲覧されていた参照元に戻るために同じように使える
         else
             @genres = Genre.all
-            flash[:notice] = "更新に失敗しました。入力を確認してください。"
+            flash.now[:notice] = "更新に失敗しました。入力を確認してください。<br>・ジャンル記入欄が空ではないですか?<br>・既にあるジャンル名ではないですか？".html_safe
             render :index
         end
     end

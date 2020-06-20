@@ -1,4 +1,4 @@
-<div class="container" style="margin:1vw 50px 0;">
+<div class="container" style="margin:0 50px 0;">
     <div class="row">
         <div class="col-6 text-left">
                 <%= flash[:notice] %>
@@ -11,16 +11,24 @@
     </div>
 </div>
 
-<% form_for(@recommend,url:admins_admin_recommend(@recommend), method: :patch) do |f| %>
-    <%= f.label :genre_name,"ジャンル" %>
-    <%= f.text_field :genre_name, autocomplete: "名称" %>
-    <%= f.label :image %>
-    <%= attachment_image_tag(@recommend, :image, accept: 'image/png',:size =>'35x35', id: :img_prev) %>
-    <%= f.attachment_field :image %>
-    <%= f.label :tooth_paste_name, "製品名" %>
-    <%= f.text_field :tooth_paste_name, autocomplete: "名称" %>
-    <%= f.label :comment, "コメント" %>
-    <%= f.text_field :comment %>
-        <span class="text-left">
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <%= attachment_image_tag(@recommend.paste, :image, size: '100x100') %>
+        </div>
+        <div class="col-7 row">
+            <div class="col-3"><%= @recommend.paste.genre.genre_name %></div>
+            <div class="col-7"><%= @recommend.paste.tooth_paste_name %></div>
+            <div class="col-2"><%= @recommend.paste.price %>円</div>
+            <div class="col-12">
+                <%= form_for(@recommend,url:admins_admin_recommend_path(@recommend), method: :patch) do |f| %>
+                <%= f.label :comment, "コメント編集" %>
+                <%= f.text_area :comment, class:"form-control" %>
+            </div>
+        </div>
+        <div class="col-2 center-auto">
             <%= f.submit "変更を保存する", class: "btn-primary ml-5",style:"border-radius: 0.3em" %>
             <% end %>
+        </div>
+    </div>
+</div>
