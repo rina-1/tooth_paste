@@ -4,6 +4,7 @@ class Admins::AdminRecommendsController < ApplicationController
         @recommend = AdminRecommend.new
         @q = Paste.ransack(params[:q])
         @paste = @q.result(distinct: true)
+        # @paste = @q.result.includes(:user).page(params[:page])
         # @pastes = @paste.page(params[:page]).reverse_order
         # ↓ターミナルのログで、入ってるデータを確認することができる
         # logger.debug 'zzzzzzzz'　　　　　　　　　　　　 ←ログで見つけやすいように適当な文字打ってあるだけなのでなくてもok

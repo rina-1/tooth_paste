@@ -16,18 +16,13 @@ Rails.application.routes.draw do
     get '/users/passwords/new' => 'users/passwords#new',as: 'user_forgot_password'
    end
 
-# メガネくんから教えてもらったコード
-  # devise_for :users <- コメントアウトするか消しちゃいます
-  # devise_for :users, controllers: {
-  #     omniauth_callbacks: "users/omniauth_callbacks"
-  # }
 
 
 
   namespace :users do
     get 'users/select' => 'user_favorites#select', as: 'select_user_favorite'
     get 'users/new/:id' => 'user_favorites#new', as: 'new_user_favorite'
-    resources :user_favorites, only:[:create, :show, :edit, :update, :destroy]
+    resources :user_favorites, only:[:create, :show, :edit, :update, :destroy, :index]
 
     resources :pastes
   end
@@ -46,7 +41,8 @@ Rails.application.routes.draw do
     namespace :admins do
       resources :genres, only:[:index, :create]
       resources :pastes, only:[:new, :create, :edit, :update, :destroy] do
-        collection { post :import }
+         collection { post :import }
+        # collection { post :csv_import }
       end
       resources :admin_recommends, only:[:index, :new, :create, :edit, :update, :destroy]
     end

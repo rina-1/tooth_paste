@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_081458) do
+ActiveRecord::Schema.define(version: 2020_06_20_071705) do
 
   create_table "admin_recommends", force: :cascade do |t|
     t.text "comment"
@@ -51,16 +51,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_081458) do
     t.index ["genre_id"], name: "index_pastes_on_genre_id"
   end
 
-  create_table "social_profiles", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.string "name"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_social_profiles_on_user_id"
-  end
-
   create_table "user_favorites", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -80,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_081458) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

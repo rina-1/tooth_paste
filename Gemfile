@@ -74,6 +74,7 @@ gem "refile-mini_magick"
 gem 'ransack'
 gem 'dotenv-rails'
 gem 'roo'
+gem 'activerecord-import'
 gem 'kaminari','~> 1.2.1'
 group :production do
   gem 'mysql2'

@@ -29,6 +29,51 @@ class Paste < ApplicationRecord
     
       # 更新を許可するカラムを定義
       def self.updatable_attributes
-        ["id", "tooth_paste_name", "price", "genre_id"]
+        ["id", "tooth_paste_name", "price", "genre_id", "image_id"]
       end
+      
+
+
+      # CSV_HEADER = { 
+      #   "genre_name" => 'genre_name',
+      #   "tooth_paste_name" => 'tooth_paste_name',
+      #   "price" => 'price',
+      #   "image_id" => 'image_id'
+      #  }
+      
+      #  # 一括登録で使用するuser配列
+      #  paste = []
+      
+      #  # 画面に返すエラー
+      #  errors = []
+      
+      #  # CSVを1行ずつ解析する
+      #  CSV.foreach(file.path, headers: true, skip_blanks: true).with_index(2) do |row, row_number|
+        
+      #   paste = Paste.new
+      
+      #   # CSV_HEADERのキーを基に、hashに変換する
+      #   row_hash = row.to_hash.slice(*CSV_HEADER.keys)
+      #   paste.attributes = row_hash.transform_keys(&CSV_HEADER.method(:[]))
+      
+      #   if paste.valid?
+      #     # tasks = [{title: '晩御飯の支度', place: '家'}, {title: 'ランニング', place: }]
+      #     # tasks.each do |task|
+      #     #  paste.tasks.build(task)
+      #     # end
+      #     pastes << paste
+      #   else
+      #     errors.push({:row_num => row_number, :messages => paste.errors.full_messages})
+      #   end
+      
+       
+      
+      #  return errors if errors.present?
+      
+      #  # 一括登録
+      #  Pate.import pastes  #, recursive: true
+      
+      #  return []
+      
+      # end
 end

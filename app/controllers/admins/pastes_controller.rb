@@ -39,9 +39,19 @@ class Admins::PastesController < ApplicationController
 
     def import
         # fileはtmpに自動で一時保存される
-        Paste.import(params[:file])
+        # スードコード
+        # files = Roo::Spreadsheet.open(params[:file])
+        # files.each do |file|
+        #   image = File.open(file[4]) # ex: file[4] の中身は public/toothpaste.png
+        #   Paste.save(genre_name: file[1], thooth_paste_name: file[2], price: file[3], image: image)
+        # end
+        # Paste.import(params[:file])
         redirect_to new_admins_paste_path
     end
+
+    # def csv_import
+    #     @errors = import(param[:file])
+    # end
 
     private
 	def paste_params

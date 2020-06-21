@@ -32,6 +32,19 @@
                 </div>
                 <div class="col-9 text-left offset-2"><%= submit_tag "インポート" %></div>
                     <% end %>
+ <%# <%= form_with url: csv_import_admins_pastes_path do |form| %>
+  <%#= form.file_field :file, accept: '.csv' %>
+  <%#= form.submit "アップロード" %>
+
+　<%# if @errors.present? %>
+   <%# @errors.each do |error| %>
+     <%# error[:messages].each do |message| %>
+       <li><%#= "#{error[:row_num]}行目：#{message}" %></li>
+     <%# end %>
+   <%# end %>
+　<%# end %>
+<%# end %> 
+
             </div>
         </div>
 </div>
