@@ -1,9 +1,17 @@
-top画面<br>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
 
+
+
+top画面<br>
+<div class="main-container"></div>
 admin?
 <%= link_to 'admin', new_admin_session_path %><br>
-user?
+<h1 class="top">user?</h1>
 user_link
+<img class="image" src="assets/tiger-500118_1920.jpg" width="100" height="100" alt="tiger">
+<%#= image_tag "bg-cake.png", id: :img_prev , :size =>'300x230' %>
 <%# <%  if logged_in? %>
   <%#= link_to 'ログアウト', logout_path %> 
 <%# <% else %>
@@ -15,5 +23,3 @@ user_link
   <%= link_to 'emailでログイン', new_user_session_path %>
 <%# <% end %>
 
-<%# メガネくんから教えてもらったコード %>
-<%# <%= link_to 'Signin with Google', user_omniauth_authorize_path(:google) %> %>

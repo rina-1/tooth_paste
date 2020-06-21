@@ -1,38 +1,57 @@
-ランキング
-<table>
-  <thead>
-    <tr>
-      <th>順位</th>
-      <th>歯磨き粉</th>
-      <th>お気に入りされた数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_favorite.each_with_index do |favorite, i| %>
-      <tr>
-        <td><%= i + 1 %></td>
-        <td><%=favorite.first %></td>
-        <td><%=favorite.second %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<table>
-  <thead>
-    <tr>
-      <th>順位</th>
-      <th>歯磨き粉</th>
-      <th>お気に入りされた数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user_favorite_genre.each_with_index do |favorite, i| %>
-      <tr>
-        <td><%= i + 1 %></td>
-        <td><%=favorite.first %></td>
-        <td><%=favorite.second %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<header class="header"></header>
+    <div class="wrapper clearfix">
+        <main class="main">
+            <section>
+                <div class="ranking">
+                ランキング
+                <table>
+                <thead>
+                    <tr>
+                        <th>順位</th>
+                        <th>歯磨き粉</th>
+                        <th>お気に入りされた数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @user_favorite.each_with_index do |favorite, i| %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%=favorite.first %></td>
+                        <td><%=favorite.second %></td>
+                    </tr>
+                <% end %>
+                </tbody>        
+                </table>
+                </div>
+            </section>
+            <section>
+                <div class="ranking1">
+                <table>
+                <thead>
+                    <tr>
+                        <th>順位</th>
+                        <th>歯磨き粉</th>
+                        <th>お気に入りされた数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @user_favorite_genre.each_with_index do |favorite, i| %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%=favorite.first %></td>
+                        <td><%=favorite.second %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+                </table>
+                </div>
+            </section>
+        </main>
+        <div class="sidemenu">
+        </div>
+    </div>
+<footer class="footer"></footer>
+
+
+

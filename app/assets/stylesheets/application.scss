@@ -11,12 +11,69 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_self
+ *= require_self
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
-
  /* 画像使う場合プリコンパイル後に対応できるように url → image-url と記述*/
  /* body {
     　　background-image: image-url("hoge.jpg");   
     } */
+
+.box1{
+   width: 100%; /* 横幅いっぱい */
+   height: 120px; /* 高さ120px */
+   background-color: red; /* 背景赤色 */
+}
+.box2 {
+   width: 100%; /* 横幅 */
+   height: 300px; /* 高さ */
+   background-color: orange; /* 背景色 */
+}
+
+.header {
+   width: 100%;
+
+}
+.wrapper {
+   width: 100%;
+   margin: 30px auto 40px;
+
+}
+.main {
+   display: block;
+   float: left;
+   width: 900px;
+}
+.ranking {
+   background-color: orange;
+}
+.ranking1 {
+   background-color: rgb(245, 242, 237);
+}
+.sidemenu {
+   float: left;
+   width: 300px;
+   margin: 0 20px 0;
+}
+.footer {
+   width: 100%;
+
+}
+.clearfix::after{
+   content: '';
+   display: block;
+   clear: both;
+}
+
+
+.header, .main, .sidemenu, footer {
+   border: 1px solid #aaa;
+   background-color: #ccc;
+}
+.header, .footer{
+   height: 100px;
+}
+.main, .sidemenu{
+   height: 500px;
+}
