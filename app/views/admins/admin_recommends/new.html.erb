@@ -31,7 +31,7 @@
 </div> 
 
 <div class="container">
-<% @paste.each do |paste| %>
+<% @pastes.each do |paste| %>
   <div class="row">
     <div class="col-2"><%= attachment_image_tag(paste, :image, size: '100x100') %></div>
     <div class="col-10 row">
@@ -47,8 +47,12 @@
     </div>
   </div>
 <% end %>
-<%#= paginate @pastes %>
+<% if @pastes.present? %>
+<%= paginate @pastes %>
+<% end %>
 </div>
+
+
 
 
 <%# controller内で定義する　csvファイルを選択→保存ボタン押したとき、csvの内容がテーブルに保存される %>

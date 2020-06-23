@@ -16,14 +16,10 @@ Rails.application.routes.draw do
     get '/users/passwords/new' => 'users/passwords#new',as: 'user_forgot_password'
    end
 
-
-
-
   namespace :users do
     get 'users/select' => 'user_favorites#select', as: 'select_user_favorite'
     get 'users/new/:id' => 'user_favorites#new', as: 'new_user_favorite'
     resources :user_favorites, only:[:create, :show, :edit, :update, :destroy, :index]
-
     resources :pastes
   end
   # resources :pastes do

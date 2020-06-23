@@ -3,9 +3,11 @@ class Admins::AdminRecommendsController < ApplicationController
         @genres = Genre.all
         @recommend = AdminRecommend.new
         @q = Paste.ransack(params[:q])
-        @paste = @q.result(distinct: true)
-        # @paste = @q.result.includes(:user).page(params[:page])
-        # @pastes = @paste.page(params[:page]).reverse_order
+        @pastes = {}
+        if params[:q].present?
+          @paste = @q.result(distinct: true)
+          @pastes = @paste.page(params[:page]).reverse_order.per(2)
+        end
         # ↓ターミナルのログで、入ってるデータを確認することができる
         # logger.debug 'zzzzzzzz'　　　　　　　　　　　　 ←ログで見つけやすいように適当な文字打ってあるだけなのでなくてもok
         # logger.debug current_admin.inspect　　　　　　←確認したいインスタンス.inspectで中身のデータ見れる
@@ -21,8 +23,11 @@ class Admins::AdminRecommendsController < ApplicationController
         else
             @genres = Genre.all
             @q = Paste.ransack(params[:q])
-            @paste = @q.result(distinct: true)
-            # @pastes = @paste.page(params[:page]).reverse_order
+            @pastes = {}
+            if params[:q].present?
+              @paste = @q.result(distinct: true)
+              @pastes = @paste.page(params[:page]).reverse_order.per(2)
+            end
             flash.now[:notice] = "登録に失敗しました、内容を確認して下さい<br>・コメント内容が空ではないですか？<br>・既にお気に入り登録した製品ではないですか?".html_safe
             render :new
         end
@@ -48,8 +53,7 @@ class Admins::AdminRecommendsController < ApplicationController
         redirect_back(fallback_location: admins_genres_path)
     end
     def index
-        # @recommends = AdminRecommend.page(params[:page]).reverse_order 
-        @recommends = AdminRecommend.all
+        @recommends = AdminRecommend.page(params[:page]).reverse_order
     end
     private
 	def recommend_params

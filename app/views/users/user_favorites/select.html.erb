@@ -15,8 +15,8 @@ userおすすめ歯磨き粉select画面
 <% end %>
 
 
-<% @paste.each do |paste| %>
-<%= link_to(users_new_user_favorite_path(paste)) do%>
+<% @pastes.each do |paste| %>
+<%= link_to(users_new_user_favorite_path(paste)) do %>
 <%= attachment_image_tag(paste, :image, size: '100x100') %>
 <%= paste.genre.genre_name %>
 <%= paste.tooth_paste_name %>
@@ -24,4 +24,7 @@ userおすすめ歯磨き粉select画面
 <% end %>
 <br>
 <% end %>
-<%= link_to "user",users_user_favorite_path(@paste)	%>
+<% if @pastes.present? %>
+<%= paginate @pastes %>
+<% end %>
+<%= link_to "user",users_user_favorite_path(@user_id)	%>

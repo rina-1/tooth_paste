@@ -3,7 +3,7 @@ class Paste < ApplicationRecord
     has_many :admin_recommeds
     has_many :user_favorites, dependent: :destroy
     attachment :image
-    # validates :tooth_paste_name, uniqueness: true, presence: true
+    validates :tooth_paste_name, uniqueness: true, presence: true
     # validates :price, presence: true
 
     def self.import(file)

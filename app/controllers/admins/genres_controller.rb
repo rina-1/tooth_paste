@@ -1,7 +1,7 @@
 class Admins::GenresController < ApplicationController
     def index
         @genre = Genre.new 
-        @genres = Genre.all
+        @genres = Genre.page(params[:page]).reverse_order
     end
     def create
         @genre = Genre.new(genre_params)

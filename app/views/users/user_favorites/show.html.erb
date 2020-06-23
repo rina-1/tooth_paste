@@ -1,6 +1,6 @@
 userマイページ
 お気に入り一覧表示
-<%= current_user.name %>
+<%= current_user.name %><br>
 
 <% @user_favorites.each do |favorite| %>
   <%= attachment_image_tag(favorite.paste, :image, size: '100x100') %>
@@ -10,3 +10,4 @@ userマイページ
   コメント内容:<%= favorite.comment %>
   <%= link_to "Edit", edit_users_user_favorite_path(favorite), class: "btn-sm btn-success" %><br>
 <% end %>
+<%= paginate @user_favorites, window: 2 %>

@@ -1,0 +1,11 @@
+<p>歯磨き粉詳細ページ</p>
+<%= attachment_image_tag(@paste, :image, size: '100x100') %>
+<%= @paste.genre.genre_name %>
+<%= @paste.tooth_paste_name %>
+<%= @paste.price %>
+
+<p>みんなの口コミ</p>
+<% @user_comments.each do |comment| %>
+口コミ：<%= comment.comment %><br>
+user名:<%= comment.user.name %><br>
+<% end %>
