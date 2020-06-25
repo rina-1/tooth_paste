@@ -3,9 +3,9 @@ class Paste < ApplicationRecord
     has_many :admin_recommeds
     has_many :user_favorites, dependent: :destroy
     attachment :image
-    validates :tooth_paste_name, uniqueness: true, presence: true
+    # validates :tooth_paste_name, uniqueness: true, presence: true
     # validates :price, presence: true
-
+=begin
     def self.import(file)
         CSV.foreach(file.path, headers: true) do |row|
           genre = Genre.find_by(genre_name: row["genre_name"]) || new
@@ -26,12 +26,14 @@ class Paste < ApplicationRecord
           # byebug
         end
       end
+
+=end 
     
       # 更新を許可するカラムを定義
       def self.updatable_attributes
         ["id", "tooth_paste_name", "price", "genre_id", "image_id"]
       end
-      
+     
 
 
       # CSV_HEADER = { 

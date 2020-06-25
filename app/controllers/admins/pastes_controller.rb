@@ -11,6 +11,7 @@ class Admins::PastesController < ApplicationController
             redirect_back(fallback_location: new_admins_paste_path)
         else
             @tooth_pastes = Paste.all
+            @pastes = Paste.page(params[:page]).reverse_order
             flash[:notice] = "登録に失敗しました。入力を確認してください。<br>・製品名記入欄が空ではないですか？<br>・値段記入欄が空ではないですか?<br>・既に登録してある製品ではないですか？".html_safe
             render :new
         end
@@ -39,19 +40,34 @@ class Admins::PastesController < ApplicationController
 
     def import
         # fileはtmpに自動で一時保存される
-        # スードコード
-        # files = Roo::Spreadsheet.open(params[:file])
-        # files.each do |file|
-        #   image = File.open(file[4]) # ex: file[4] の中身は public/toothpaste.png
-        #   Paste.save(genre_name: file[1], thooth_paste_name: file[2], price: file[3], image: image)
-        # end
-        # Paste.import(params[:file])
+        require "csv"                   #file→csvファイルのこと、File→Railsのファイルのこと
+        csv_file = params[:file].path   #:fileはcsvfile自体のこと。パラメーターで渡ってきたデータ
+        CSV.foreach(csv_file, headers: true) do |row|
+            genre = Genre.find_by(genre_name: row["genre_name"])
+            if row["file"].nil? || row["file"] == ""   #csvの中の"file"（headerにかかれてるアトリビュートのこと）
+                # file.close必要な書き方(fileは開いたら閉じる必要がある)
+                file = File.open("#{Rails.root}/public/food2.png", "rb")    #画像ファイル開いてる
+                Paste.create(
+                    genre_id: genre.id,
+                    tooth_paste_name: row['tooth_paste_name'],
+                    price: row['price'],
+                    image: file
+                    )
+                file.close
+            else
+                 # do endの場合はfile.close必要じゃない
+                File.open(Rails.root.join(row['file']), "rb") do |file|　#Rails.root.join(row['file])は画像があるところまでのpath、"rb"はreedbinaryのこと
+                    Paste.create(
+                    genre_id: genre.id,
+                    tooth_paste_name: row['tooth_paste_name'],
+                    price: row['price'],
+                    image: file
+                    )
+                end
+            end     
+        end  
         redirect_to new_admins_paste_path
     end
-
-    # def csv_import
-    #     @errors = import(param[:file])
-    # end
 
     private
 	def paste_params

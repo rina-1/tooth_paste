@@ -29,14 +29,3 @@ Genre.create!(
     genre_name: '知覚過敏'
 )
 
-require "csv"
-CSV.foreach('db/paste6_21.csv', headers: true) do |row|
-    genre = Genre.find_by(genre_name: row["genre_name"])
-  Paste.create(
-    genre_id: genre.id,
-    tooth_paste_name: row['tooth_paste_name'],
-    price: row['price'],
-    # image_id: row['image_id']
-  )
-end
-

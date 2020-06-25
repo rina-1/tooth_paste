@@ -15,62 +15,34 @@
     </p>
 </div>
 </div>
-    
     <div class="wrapper clearfix">
-        <main class="main">
-            <section>
-                <div class="ranking">
-                総合ランキング
-                <table>
-                <thead>
-                    <tr>
-                        <th>順位</th>
-                        <th>歯磨き粉</th>
-                        <th>お気に入りされた数</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <% @user_favorites.each_with_index do |favorite, i| %>
-                <p><%#= favorite[1].inspect %></p>
+        <main class="main">総合ランキング
+            <section>             
+            <% @user_favorites.each_with_index do |favorite, i| %>
                 <% if i < 3 %>
-                    <tr>
-                        <td><%= i + 1 %></td>
-                        <td><%= attachment_image_tag(favorite[1], :image, size: '100x100') %></td>
-                        <td><%= favorite[0].first %></td>
-                        <td><%= favorite[0].second %></td>
-                        <td><%= link_to "詳しく見る", users_paste_path(favorite[1].id) %></td>
-                    </tr>
-                    <% end %>
+                <div class="box_1">
+                       <%= i + 1 %><br>
+                        <%= attachment_image_tag(favorite[1], :image, size: '150x150') %><br>
+                        <%= favorite[0].first %><br>
+                        <%= favorite[0].second %><br>
+                        <%= link_to "詳しく見る", users_paste_path(favorite[1].id) %>
                 <% end %>
-                </tbody>        
-                </table>
                 </div>
+            <% end %>
             </section>
-            <section>
-                <div class="ranking1">ジャンル別:ホワイトニングランキング
-                <table>
-                <thead>
-                    <tr>
-                        <th>順位</th>
-                        <th>歯磨き粉</th>
-                        <th>お気に入りされた数</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <section>ジャンル別:ホワイトニングランキング
+                <div class="ranking1">
                 <% @user_favorite_genre.each_with_index do |favorite, i| %>
-                    <% if i < 3 %>
-                    <tr>
-                        <td><%= i + 1 %></td>
-                        <td><%= attachment_image_tag(favorite[1], :image, size: '100x100') %></td>
-                        <td><%= favorite[0].first %></td>
-                        <td><%= favorite[0].second %></td>
-                        <td><%= link_to "詳しく見る", users_paste_path(favorite[1].id) %></td>
-                    </tr>
-                    <% end %>
+                <% if i < 3 %>
+                <div class="box_1">
+                         <%= i + 1 %><br>
+                        <%= attachment_image_tag(favorite[1], :image, size: '150x150') %><br>
+                        <%= favorite[0].first %><br>
+                        <%= favorite[0].second %><br>
+                        <%= link_to "詳しく見る", users_paste_path(favorite[1].id) %>
                 <% end %>
-                </tbody>
-                </table>
                 </div>
+            <% end %>
             </section>
         </main>
         <div class="sidemenu">
@@ -89,3 +61,12 @@
         </section>
         </div>
     </div>
+<%# <div class="box_1">
+  box_1
+</div>
+<div class="box_2">
+  box_2
+</div>
+<div class="box_3">
+  box_3
+</div> %>

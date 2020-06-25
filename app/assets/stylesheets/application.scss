@@ -20,52 +20,59 @@
     　　background-image: image-url("hoge.jpg");   
     } */
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      color: #6c6b6b;
-  }
+   * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   color: gray;
+}
 
   @font-face{
    font-family: "mk-font";
    src: asset_url('851MkPOP_002.ttf') format('truetype');
-
  }
 
-.box1{
-   width: 100%; /* 横幅いっぱい */
-   height: 120px; /* 高さ120px */
-   background-color: red; /* 背景赤色 */
-}
-.box2 {
-   width: 100%; /* 横幅 */
-   height: 300px; /* 高さ */
-   background-color: orange; /* 背景色 */
-}
+// .box1{
+//    width: 100%; /* 横幅いっぱい */
+//    height: 120px; /* 高さ120px */
+//    background-color: red; /* 背景赤色 */
+// }
+// .box2 {
+//    width: 100%; /* 横幅 */
+//    height: 300px; /* 高さ */
+//    background-color: orange; /* 背景色 */
+// }
 header {
-   width: 90%;
+   width: 100%;
    padding: 15px 0;
    margin: 0 auto;
-   text-align: center;
+   // text-align: left;
+   // background-image: image-url("paste-top.jpg");
 }
 header .headline {
    font-size: 32px;
+   color: gray;
    font-family: "mk-font";
+   text-align: left;
+   list-style: none;   
+   // display: inline-block;
+   margin: 0 30px;
 }
 .nav-list {
-   text-align: center;
+   text-align: right;
    padding: 10px 0;
-   margin: 0 auto;
+   // margin: 0 auto;
+   color: white;
 }
 .nav-list-item {
    list-style: none;   
    display: inline-block;
    margin: 0 30px;
+   // color: whitesmoke;
 }
 
-.font-color{
-   color: #6c6b6b;
+.font-color {
+   color: gray;
    font-size: 20px;
    font-family: "mk-font";
 }
@@ -108,7 +115,7 @@ footer {
 .footer-text {
    color: #fff;
 }
-.clearfix::after{
+.clearfix::after {
    content: '';
    display: block;
    clear: both;

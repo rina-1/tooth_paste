@@ -1,10 +1,25 @@
 userおすすめ歯磨き粉選択後
-コメント記入ページ<br>
-<%= attachment_image_tag(@paste, :image, size: '100x100') %><br>
-<%= @paste.genre.genre_name %><br>
-<%= @paste.tooth_paste_name %><br>
-<%= @paste.price %>円<br>
-
+コメント記入ページ
+  <div class="my_page_box">
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+         <%= attachment_image_tag(@paste, :image, size: '180x180') %><br>
+        </div>
+        <div class="col-9 row">
+            <div class="col-11 offset-1">
+                ジャンル:<%= @paste.genre.genre_name %>
+            </div>   
+            <div class="col-11 offset-1">
+                製品名：<%= @paste.tooth_paste_name %>
+            </div>
+            <div class="col-11 offset-1">
+                値段<%= @paste.price %>円
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <%# コメント記入用 %>
 <%= form_for(@comment, url:users_user_favorites_path) do |f| %>
 <%= f.text_area :comment, class:"form-control",placeholder:"コメントをここに"%>

@@ -10,66 +10,87 @@
     
   </head>
   <body>
-  <header class="header">
-    <h2 class="headline">ロゴ:歯磨き粉マニア</h2>
-  </header>
-  <nav>
-      <ul class="nav-list">
-            <% if admin_signed_in? %>
-              <li class="nav-list-item">
-                <%= link_to "歯磨き粉登録", new_admins_paste_path, class:"font-color" %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "おすすめ登録", new_admins_admin_recommend_path, class:"font-color" %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "おすすめ一覧", admins_admin_recommends_path, class:"font-color" %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "ジャンル登録", admins_genres_path, class:"font-color" %>
-              </li>
-              <li class="nav-list-item">
-                <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class:"font-color" %>
-              </li>
-            <% else %>
-            <% if user_signed_in? %>
-                <li class="user_name">ようこそ、<%= current_user.name%>さん</li>
-                <li class="nav-list-item">
-                  <%= link_to "歯について", root_path, class:"font-color" %>
-                </li>
-                <li class="nav-list-item">
-                  <%= link_to "ランキング", users_user_favorites_path, class:"font-color" %>
-                </li>
-                <li class="nav-list-item">
-                  <%= link_to "マイページ", users_user_favorite_path(current_user.id), class:"font-color" %>
-                </li>
-              <li class="nav-list-item">
-                  <%= link_to "推す", users_select_user_favorite_path, class:"font-color" %>
-                </li>
-                <li class="nav-list-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"font-color" %>
-                </li>
-              <% else %>
-                <li class="nav-list-item">
-                  <%= link_to "歯について", root_path, class:"font-color" %>
-                </li>
-              <li class="nav-list-item">
-                  <%= link_to "ランキング", users_pastes_path, class:"font-color" %>
-                </li>
-                <li class="nav-list-item">
-                  <%= link_to "新規登録", new_user_registration_path, class:"font-color" %>
-                </li>
-                <li class="nav-list-item">
-                  <%= link_to "ログイン", new_user_session_path, class:"font-color" %>
-                </li>
-                <li class="nav-list-item">
-                  <%= link_to '管理者の方はこちら', new_admin_session_path, class:"font-color"  %>
-                </li>
-              <% end %>
-              <% end %>
-      </ul>
-  </nav>
+ 
+<%# あやちゃんが教えてくれたヘッダー %>
+<%# <header>
+ <nav>
+ <ul>
+  <li>
+  <i></i>
+  <%# link_to %>
+  <%# </li></ul>
+ </nav>
+</header> %> 
 
+
+<header class="header">
+  <nav>
+    <ul class="nav-list">
+      <h2 class="headline">ロゴ:ToothPasteMania</h2>
+  <%#= image_tag "Free_Sample_By_Wix.jpeg", alt: "Rails icon", id: "assets", class: "image", width: "300px" %>
+      <% if admin_signed_in? %>
+      <li class="nav-list-item">
+        <%= link_to "歯磨き粉登録", new_admins_paste_path, class:"font-color" %>
+      </li>
+      <li class="nav-list-item">
+        <%= link_to "おすすめ登録", new_admins_admin_recommend_path, class:"font-color" %>
+      </li>
+      <li class="nav-list-item">
+        <%= link_to "おすすめ一覧", admins_admin_recommends_path, class:"font-color" %>
+      </li>
+      <li class="nav-list-item">
+        <%= link_to "ジャンル登録", admins_genres_path, class:"font-color" %>
+      </li>
+      <li class="nav-list-item">
+        <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class:"font-color" %>
+      </li>
+    <% else %>
+    <% if user_signed_in? %>
+        <li class="user_name">
+          ようこそ、<%= current_user.name %>さん
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "歯について", root_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ランキング", users_user_favorites_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "マイページ", users_user_favorite_path(current_user.id), class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "推す", users_select_user_favorite_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "お問合せ", inquiries_new_path, class:"font-color" %>
+        </li>
+      <% else %>
+        <li class="nav-list-item">
+          <%= link_to "歯について", root_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ランキング", users_pastes_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "新規登録", new_user_registration_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "ログイン", new_user_session_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to "お問合せ", inquiries_new_path, class:"font-color" %>
+        </li>
+        <li class="nav-list-item">
+          <%= link_to '管理者の方はこちら', new_admin_session_path, class:"font-color"  %>
+        </li>
+      <% end %>
+      <% end %>
+    </ul>
+  </nav>
+</header>
   <%= yield %>
   <footer class="footer">
     <p class="footer-text">© All rights reserved by Infratop.Inc.</p>

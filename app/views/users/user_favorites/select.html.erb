@@ -1,30 +1,70 @@
-userおすすめ歯磨き粉select画面
-
-<%= search_form_for(@q,url:users_select_user_favorite_path, method: :get,  local:true) do |f| %>
-  <%= f.label :tooth_paste_name, "Keyword" %>
-  <%= f.search_field :tooth_paste_name_cont %>
-
-  <%= f.label :price %>
-  <%= f.number_field :price_gteq %>以上〜
-  <%= f.number_field :price_lt %>未満
-
-  <%= f.label :genre_genre_name, "ジャンル名" %>
-  <%= f.collection_select :genre_genre_name_eq, @genres, :genre_name, :genre_name, {class: 'form-control'} %>
-  <%# genre_genre_name_eq → モデル名_カラム名_eq（ransackの書き方） %>
-  <%= f.submit "検索" %>
-<% end %>
-
-
+<div class="main-visual">
+  <div class="main-visual-content-rank">
+    <%# <p class="main-visual-text"> %>
+      <div class="ransack_container">
+        <h1>userおすすめ歯磨き粉select画面</h1>
+        <%= search_form_for(@q,url:users_select_user_favorite_path, method: :get,  local:true) do |f| %>
+        <div class="container">
+          <div class="row">
+            <div class="col-2">
+              <%= f.label :tooth_paste_name %>
+            </div>
+            <div class="col-10">
+              <%= f.search_field :tooth_paste_name_cont, class:"ransack-textbox", placeholder:"Keyword" %>
+            </div>
+            <div class="col-2">
+              <%= f.label :price %>
+            </div>
+            <div class="col-9">
+              <%= f.number_field :price_gteq, class:"ransack-textbox-pricebox", placeholder:"price" %>〜 
+              <%= f.number_field :price_lt, class:"ransack-textbox-pricebox" %>未満
+            </div>
+            <div class="col-2">
+                <%= f.label :genre_genre_name, "genre", class:"ransack-label" %>
+            </div>
+            <div class="col-7">
+                <%= f.collection_select :genre_genre_name_eq, @genres, :genre_name, :genre_name,{prompt: ""}, {class: 'form-control ransack-textbox'} %>
+                <%# genre_genre_name_eq → モデル名_カラム名_eq（ransackの書き方） %>  
+            </div>
+            <div class="col-10">
+              <%= f.submit "検索" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
 <% @pastes.each do |paste| %>
-<%= link_to(users_new_user_favorite_path(paste)) do %>
-<%= attachment_image_tag(paste, :image, size: '100x100') %>
-<%= paste.genre.genre_name %>
-<%= paste.tooth_paste_name %>
-<%= paste.price %>円
-<% end %>
-<br>
+  <%= link_to(users_new_user_favorite_path(paste)) do %>
+  <div class="my_page_box">
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <%= attachment_image_tag(paste, :image, size: '150x150') %>
+        </div>
+        <div class="col-9 row">
+            <div class="col-11 offset-1">
+              ジャンル：<%= paste.genre.genre_name %>
+            </div>   
+            <div class="col-11 offset-1">
+             製品名：<%= paste.tooth_paste_name %>
+            </div>
+            <div class="col-11 offset-1">
+             値段<%= paste.price %>円
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 <% end %>
 <% if @pastes.present? %>
-<%= paginate @pastes %>
+  <%= paginate @pastes %>
 <% end %>
-<%= link_to "user",users_user_favorite_path(@user_id)	%>
+
+ <%= link_to "マイページへ",users_user_favorite_path(@user_id)	%>
+ 
+
+
+

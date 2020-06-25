@@ -302,13 +302,6 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_KEY']
   config.omniauth :google_oauth2, ENV['GOOGLE_ID'], ENV['GOOGLE_KEY']
   
-  # メガネくんから教えてもらったコード
-  # require 'devise/orm/active_record'
-  # config.omniauth :google_oauth2,
-  #                 ENV['GOOGLE_ID'], # 環境変数に先ほど控えたクライアントIDを入れておく
-  #                 ENV['GOOGLE_KEY'], # 環境変数に先ほど控えたシークレットを入れておく
-  #                 name: :google,
-  #                 scope: %w(email) 
 
 
 

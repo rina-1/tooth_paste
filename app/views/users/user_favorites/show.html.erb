@@ -1,13 +1,49 @@
-userマイページ
-お気に入り一覧表示
-<%= current_user.name %><br>
+<div class="main-visual">
+<div class="main-visual-content">
+    <!-- pタグ（と文字）を追加 -->
+    <p class="main-visual-text">
+         <%= current_user.name %>さんの<br>
+        お気に入り一覧表示<br>
+        編集<br>
 
+    </p>
+    </p>
+    <p class="main-visual-name">
+        St. Augustine
+    </p>
+</div>
+</div>
 <% @user_favorites.each do |favorite| %>
-  <%= attachment_image_tag(favorite.paste, :image, size: '100x100') %>
-  ジャンル:<%= favorite.paste.genre.genre_name %>
-  製品名:<%= favorite.paste.tooth_paste_name %>
-  値段:<%= favorite.paste.price %>
-  コメント内容:<%= favorite.comment %>
-  <%= link_to "Edit", edit_users_user_favorite_path(favorite), class: "btn-sm btn-success" %><br>
+  <div class="my_page_box">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+            製品名:<%= favorite.paste.tooth_paste_name %>
+        </div>
+        <div class="col-3 row">
+          <div class="col-12">
+            <%= attachment_image_tag(favorite.paste, :image, size: '180x180') %>
+          </div>
+        </div>
+        <div class="col-9 row">
+          <div class="col-11 offset-1">
+            ジャンル:<%= favorite.paste.genre.genre_name %>
+          </div>
+          <div class="col-11 offset-1">
+              値段:<%= favorite.paste.price %>円
+          </div>
+          <div class="col-11 offset-1">
+              コメント内容:<%= favorite.comment %>
+          </div>
+          <div class="col-11 offset-1">
+              <%= link_to "Edit", edit_users_user_favorite_path(favorite), class: "btn-sm" %>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
 <% end %>
-<%= paginate @user_favorites, window: 2 %>
+<%= paginate @user_favorites %>
+
+
+

@@ -1,3 +1,156 @@
 // Place all the styles related to the users::user_favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper_user_show {
+    width: 1100px;
+    margin: 30px auto 30px;
+ 
+ }
+ .main_user_show {
+    display: block;
+    float: left;
+    width: 750px;
+ }
+
+ .ranking-container {
+     height: 200px;
+ }
+
+//  zzzzzzzzzzzzzz
+.box_1 {
+    text-align: center;
+    display: inline-block;
+    color: #FFF;
+    width:200px;
+    height:250px;
+    background-color: red;
+}
+ 
+.box_2{
+  display: inline-block;
+  color: #FFF;
+  width:100px;
+  height:100px;
+  background-color: blue;
+  text-align: center;
+}
+ 
+.box_3{
+    display: inline-block;
+  color: #FFF;
+  width:100px;
+  height:100px;
+  background-color: green;
+}
+
+// 影付きのbox
+.my_page_box {
+    padding: 0.5em 1em;
+    margin:20px auto;
+    color: rgb(246, 248, 248);
+    background: #f9fafad7;/*背景色*/
+    border-top: solid 6px #8486864d;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+    height: 100%;
+    width: 80%;
+}
+
+
+// *{box-sizing: border-box;}
+
+// html, body{
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+//   height: 100%;
+//   width: 100%;
+//   background-color: #3cad7e;
+//   font-family: 'Arial', sans-serif;
+// }
+
+// 検索フォーム
+.ransack_container {  
+  h1{
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+  }
+}
+
+.ransack-wrap {
+  position: relative;
+  width: 500px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.ransack-wrap-pricebox {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+}
+
+// .ransack-label{
+//   position: absolute;
+//   top: 6px;
+//   left: 10px;
+//   font-size: 16px;
+//   color: #a0a0a0;
+//   transition: all 0.25s ease;
+  
+//   &.focus{
+//     top: -25px;
+//     left: 5px;
+//     font-size: 14px;
+//     color: #fff;
+//   }
+// }
+
+.ransack-textbox{
+  position: relative;
+  display: block;
+  width: 500px;
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #a0a0a0;
+  outline: none;
+}
+
+.ransack-textbox-pricebox {
+//   position: relative;
+//   display: block;
+  width: 300px;
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #a0a0a0;
+  outline: none;
+}
+
+// mainサイズ、透過色　main-visual、main-visual-content変更
+// .main-visual-rank {
+//     width: 100%;
+//     height: 300px;
+//     background-image: image-url("paste-top.jpg");
+//     background-size: 600px auto;
+//     background-position: center; 
+//  }  
+
+.main-visual-content-rank{
+    width: 80%;
+    height: 100%;
+    background-color: rgba( 0, 0, 0, 0.5);
+    // text-align: center;
+    padding-top: 20px;
+    margin: 0 auto;
+ }

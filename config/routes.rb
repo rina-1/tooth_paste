@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'inquiries/new'
+  get 'inquiries/create'
   root 'homes#top'
+
+  resources :inquiries, only:[:new, :create]
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get '/logout', to: 'sessions#destroy'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
