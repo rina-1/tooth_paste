@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
   # ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
     if resource.is_a?(Admin)
-        new_admin_session_path
+        root_path
     else
-        new_admin_session_path
+        root_path
      end
   end
   protected

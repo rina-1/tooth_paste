@@ -1,32 +1,31 @@
 <div class="main-visual">
   <div class="main-visual-content-rank">
-    <%# <p class="main-visual-text"> %>
       <div class="ransack_container">
-        <h1>userおすすめ歯磨き粉select画面</h1>
+        <h1>おすすめ歯磨き粉select</h1>
         <%= search_form_for(@q,url:users_select_user_favorite_path, method: :get,  local:true) do |f| %>
         <div class="container">
           <div class="row">
-            <div class="col-2">
-              <%= f.label :tooth_paste_name %>
+            <div class="col-2 mt-4">
+              <%= f.label :tooth_paste_name, class:"font-color-white" %>
             </div>
-            <div class="col-10">
+            <div class="col-10 mt-2">
               <%= f.search_field :tooth_paste_name_cont, class:"ransack-textbox", placeholder:"Keyword" %>
             </div>
-            <div class="col-2">
-              <%= f.label :price %>
+            <div class="col-2 mt-4">
+              <%= f.label :price, class:"font-color-white" %>
             </div>
-            <div class="col-9">
+            <div class="col-9 mt-2">
               <%= f.number_field :price_gteq, class:"ransack-textbox-pricebox", placeholder:"price" %>〜 
               <%= f.number_field :price_lt, class:"ransack-textbox-pricebox" %>未満
             </div>
-            <div class="col-2">
-                <%= f.label :genre_genre_name, "genre", class:"ransack-label" %>
+            <div class="col-2 mt-4">
+                <%= f.label :genre_genre_name, "genre", class:"font-color-white" %>
             </div>
-            <div class="col-7">
+            <div class="col-7 mt-2">
                 <%= f.collection_select :genre_genre_name_eq, @genres, :genre_name, :genre_name,{prompt: ""}, {class: 'form-control ransack-textbox'} %>
                 <%# genre_genre_name_eq → モデル名_カラム名_eq（ransackの書き方） %>  
             </div>
-            <div class="col-10">
+            <div class="col-10 mt-2">
               <%= f.submit "検索" %>
           </div>
         </div>
@@ -35,6 +34,7 @@
     </div>
   </div>
   </div>
+<div class="user-main-box">
 <% @pastes.each do |paste| %>
   <%= link_to(users_new_user_favorite_path(paste)) do %>
   <div class="my_page_box">
@@ -62,9 +62,8 @@
 <% if @pastes.present? %>
   <%= paginate @pastes %>
 <% end %>
-
  <%= link_to "マイページへ",users_user_favorite_path(@user_id)	%>
- 
+ </div>
 
 
 

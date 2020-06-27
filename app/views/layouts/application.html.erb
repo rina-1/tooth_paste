@@ -26,7 +26,8 @@
 <header class="header">
   <nav>
     <ul class="nav-list">
-      <h2 class="headline">ロゴ:ToothPasteMania</h2>
+      <h2 class="headline">ToothPasteMania</h2>
+      <h5 class="flash_message_font"><%= flash[:success] %></h5>
   <%#= image_tag "Free_Sample_By_Wix.jpeg", alt: "Rails icon", id: "assets", class: "image", width: "300px" %>
       <% if admin_signed_in? %>
       <li class="nav-list-item">
@@ -47,10 +48,10 @@
     <% else %>
     <% if user_signed_in? %>
         <li class="user_name">
-          ようこそ、<%= current_user.name %>さん
+          ようこそ <%= current_user.name %>さん
         </li>
         <li class="nav-list-item">
-          <%= link_to "歯について", root_path, class:"font-color" %>
+          <%= link_to "このサイトについて", root_path, class:"font-color" %>
         </li>
         <li class="nav-list-item">
           <%= link_to "ランキング", users_user_favorites_path, class:"font-color" %>
@@ -69,10 +70,10 @@
         </li>
       <% else %>
         <li class="nav-list-item">
-          <%= link_to "歯について", root_path, class:"font-color" %>
+          <%= link_to "このサイトについて", root_path, class:"font-color" %>
         </li>
         <li class="nav-list-item">
-          <%= link_to "ランキング", users_pastes_path, class:"font-color" %>
+          <%= link_to "ランキング", users_user_favorites_path, class:"font-color" %>
         </li>
         <li class="nav-list-item">
           <%= link_to "新規登録", new_user_registration_path, class:"font-color" %>

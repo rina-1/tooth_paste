@@ -1,24 +1,44 @@
-userお気に入り編集ページ
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-3">
-            <%= attachment_image_tag(@user_favorite.paste, :image, size: '100x100') %>
-        </div>
-        <div class="col-7 row">
-            <div class="col-3"><%= @user_favorite.paste.genre.genre_name %></div>
-            <div class="col-7"><%= @user_favorite.paste.tooth_paste_name %></div>
-            <div class="col-2"><%= @user_favorite.paste.price %>円</div>
-            <div class="col-12">
-                <%= form_for(@user_favorite,url:users_user_favorite_path(@user_favorite), method: :patch) do |f| %>
-                <%= f.label :comment, "コメント編集" %>
-                <%= f.text_area :comment, class:"form-control" %>
-            </div>
-        </div>
-        <div class="col-2 center-auto">
-            <%= f.submit "変更を保存する", class: "btn-primary ml-5",style:"border-radius: 0.3em" %>
-            <% end %>
-        </div>
-    </div>
+<div class="main-visual">
+  <div class="main-visual-content">
+      <!-- pタグ（と文字）を追加 -->
+      <p class="main-visual-text font-color-white">
+          <%= current_user.name %>さんの<br>
+          お気に入り編集ページ<br>
+      </p>
+      </p>
+      <p class="main-visual-name">
+          St. Augustine
+      </p>
+  </div>
 </div>
+  <div class="my_page_box">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 m-3">
+            製品名:<%= @user_favorite.paste.tooth_paste_name %>
+        </div>
+        <div class="col-3 row">
+          <div class="col-12">
+            <%= attachment_image_tag(@user_favorite.paste, :image, size: '180x180') %>
+          </div>
+        </div>
+        <div class="col-9 row">
+          <div class="col-11 offset-1 m-0">
+            ジャンル:<%= @user_favorite.paste.genre.genre_name %>
+          </div>
+          <div class="col-11 offset-1 m-1">
+             値段   :<%= @user_favorite.paste.price %>円
+          </div>
+          <div class="col-11 offset-1 m-1">
+            <%= form_for(@user_favorite,url:users_user_favorite_path(@user_favorite), method: :patch) do |f| %>
+            <%= f.label :comment, "コメント編集:" %>
+            <%= f.text_area :comment, class:"form-control" %>
+          </div>
+          <div class="col-11 offset-1 m-2">
+              <%= f.submit "変更を保存する" %>
+           <% end %>
+           </div>
+        </div>
+      </div>
+    </div>
+ </div>

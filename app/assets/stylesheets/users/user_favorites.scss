@@ -17,32 +17,15 @@
      height: 200px;
  }
 
-//  zzzzzzzzzzzzzz
 .box_1 {
     text-align: center;
     display: inline-block;
     color: #FFF;
-    width:200px;
-    height:250px;
-    background-color: red;
+    width:210px;
+    height:300px;
+    background-color: rgba(250, 255, 255, 0.288);
 }
  
-.box_2{
-  display: inline-block;
-  color: #FFF;
-  width:100px;
-  height:100px;
-  background-color: blue;
-  text-align: center;
-}
- 
-.box_3{
-    display: inline-block;
-  color: #FFF;
-  width:100px;
-  height:100px;
-  background-color: green;
-}
 
 // 影付きのbox
 .my_page_box {
@@ -74,9 +57,11 @@
 .ransack_container {  
   h1{
     color: #fff;
+    font-family: "mk-font";
     text-transform: uppercase;
     text-align: center;
     font-size: 30px;
+    margin: 10px;
   }
 }
 
@@ -136,6 +121,19 @@
   color: #a0a0a0;
   outline: none;
 }
+// index.html ransack-textbox-index
+.ransack-textbox-index {
+    // position: relative;
+    // display: block;
+    width: 800px;
+    // margin-top: 10px;
+    // padding: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #a0a0a0;
+    outline: none;
+  }
 
 // mainサイズ、透過色　main-visual、main-visual-content変更
 // .main-visual-rank {
@@ -154,3 +152,45 @@
     padding-top: 20px;
     margin: 0 auto;
  }
+
+.font-color-white {
+    color: white;
+    font-family: "mk-font";
+    font-size: 18px;
+}
+
+// adminおすすめ用吹き出し
+/* 吹き出し本体 */
+.admin_tag{
+    position: relative;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #f7f4f4ad;
+    border-radius: 10px;         /* 角丸を指定 */
+  }
+  
+  /* beforeで枠線の三角を表現 */
+  .admin_tag::before{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    left: 15px;
+    top: -10px;
+  }
+  
+  /* beforeで本体の三角を表現 */
+  .admin_tag::after{
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    left: 15px;
+    top: -9px;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #f7f4f4ad;
+    border-left: 9px solid transparent;
+  }

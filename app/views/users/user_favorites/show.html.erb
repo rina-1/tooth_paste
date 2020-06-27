@@ -1,18 +1,19 @@
 <div class="main-visual">
-<div class="main-visual-content">
-    <!-- pタグ（と文字）を追加 -->
-    <p class="main-visual-text">
-         <%= current_user.name %>さんの<br>
-        お気に入り一覧表示<br>
-        編集<br>
+  <div class="main-visual-content">
+      <!-- pタグ（と文字）を追加 -->
+      <p class="main-visual-text font-color-white">
+          <%= current_user.name %>さんの<br>
+          お気に入り一覧表示<br>
+          編集<br>
 
-    </p>
-    </p>
-    <p class="main-visual-name">
-        St. Augustine
-    </p>
+      </p>
+      </p>
+      <p class="main-visual-name">
+          St. Augustine
+      </p>
+  </div>
 </div>
-</div>
+<div class="user-main-box">
 <% @user_favorites.each do |favorite| %>
   <div class="my_page_box">
     <div class="container">
@@ -44,6 +45,6 @@
  </div>
 <% end %>
 <%= paginate @user_favorites %>
-
+</div>
 
 

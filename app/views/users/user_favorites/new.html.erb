@@ -21,8 +21,19 @@ userおすすめ歯磨き粉選択後
     </div>
   </div>
 <%# コメント記入用 %>
-<%= form_for(@comment, url:users_user_favorites_path) do |f| %>
-<%= f.text_area :comment, class:"form-control",placeholder:"コメントをここに"%>
-<%= f.hidden_field :paste_id, :value => @paste.id %>
-<%= f.submit "登録する" %>
-<% end %>
+<div class="container">
+  <%= form_for(@comment, url:users_user_favorites_path) do |f| %>
+    <div class="row text-center m-4">
+      <div class="col-12">
+        <%= f.text_area :comment, class:"form-control",placeholder:"コメントをここに"%>
+        <%= f.hidden_field :paste_id, :value => @paste.id %> 
+      </div>
+    </div>
+    <div class="row m-4">
+      <div class="col">
+          <%= f.submit "登録する" %>
+      </div>
+    </div>
+  </div>
+  <% end %> 
+</div>

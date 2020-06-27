@@ -1,14 +1,12 @@
+
 <%= form_for @inquiry do |f| %>
-  <div class="form-group">
+  <div class="form-group", style="width:80%; margin:0 auto;">
     <%= f.label :name, 'name' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
-
- <div class="form-group">
-   <%= f.label :message, 'お問い合わせ内容' %>
-   <%= f.text_area :message, size: '10x10', class: 'form-control' %>
- </div>
-
-  <%= f.submit '送信' %>
-
+  <div class="form-group", style="width:80%; margin:0 auto;">
+    <%= f.label :message, 'お問い合わせ内容' %>
+    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+  </div>
+  <%= f.submit '送信', style:"margin:20px 130px;" %>
 <% end %>
