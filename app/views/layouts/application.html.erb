@@ -4,32 +4,21 @@
     <title>ToothPaste</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+crossorigin="anonymous">
+  </script>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
   </head>
   <body>
- 
-<%# あやちゃんが教えてくれたヘッダー %>
-<%# <header>
- <nav>
- <ul>
-  <li>
-  <i></i>
-  <%# link_to %>
-  <%# </li></ul>
- </nav>
-</header> %> 
-
 
 <header class="header">
   <nav>
     <ul class="nav-list">
       <h2 class="headline">ToothPasteMania</h2>
       <h5 class="flash_message_font"><%= flash[:success] %></h5>
-  <%#= image_tag "Free_Sample_By_Wix.jpeg", alt: "Rails icon", id: "assets", class: "image", width: "300px" %>
       <% if admin_signed_in? %>
       <li class="nav-list-item">
         <%= link_to "歯磨き粉登録", new_admins_paste_path, class:"font-color" %>
@@ -95,7 +84,7 @@
 </header>
   <%= yield %>
   <footer class="footer">
-    <p class="footer-text">© All rights reserved by Infratop.Inc.</p>
+    <p class="footer-text">© toothpastemania.</p>
   </footer>
   </body>
 </html>
