@@ -46,7 +46,7 @@ class Admins::PastesController < ApplicationController
             genre = Genre.find_by(genre_name: row["genre_name"])
             if row["file"].nil? || row["file"] == ""   #csvの中の"file"（headerにかかれてるアトリビュートのこと）
                 # file.close必要な書き方(fileは開いたら閉じる必要がある)
-                file = File.open("#{Rails.root}/public/food2.png", "rb")    #画像ファイル開いてる
+                file = File.open("#{Rails.root}/public/icon_2018_25.png", "rb")    #画像ファイル開いてる
                 Paste.create(
                     genre_id: genre.id,
                     tooth_paste_name: row['tooth_paste_name'],

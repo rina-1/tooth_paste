@@ -3,7 +3,6 @@
       <!-- pタグ（と文字）を追加 -->
       <p class="main-visual-text font-color-white">
          歯磨き粉詳細ページ<br>
-
       </p>
       </p>
   </div>
@@ -33,7 +32,7 @@
 <% @user_comments.each do |comment| %>
     <div class="tag">
         <div class="icon">
-            <%= attachment_image_tag(@paste, :image, size: '100x100') %>
+          <%= image_tag("125040.png", size: '100x100') %>
         </div>
         <%= comment.comment %><br>
         <%= comment.user.name %>さん

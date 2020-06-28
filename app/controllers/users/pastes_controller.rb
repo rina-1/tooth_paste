@@ -14,6 +14,7 @@ class Users::PastesController < ApplicationController
       # genre別ランキング
       @genres = Genre.all
       @q = Genre.ransack(params[:q])
+      @user_favorite_genre = {}
       if params[:q].present?  #検索された場合の処理
         @genre = @q.result(distinct: true)
         user_favorite_genre = UserFavorite.joins(:paste).where('pastes.genre_id = ?', @genre.ids).group("tooth_paste_name").order('count_all DESC').count
