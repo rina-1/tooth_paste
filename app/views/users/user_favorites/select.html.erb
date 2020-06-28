@@ -26,7 +26,8 @@
                 <%# genre_genre_name_eq → モデル名_カラム名_eq（ransackの書き方） %>  
             </div>
             <div class="col-10 mt-2">
-              <%= f.submit "検索" %>
+            <%# <i class="fas fa-search" style="color:white;"></i> %>
+              <%= f.submit "Search", class:"btn-flat-border" %>
           </div>
         </div>
       </div>
@@ -34,7 +35,6 @@
     </div>
   </div>
   </div>
-<div class="user-main-box">
 <% @pastes.each do |paste| %>
   <%= link_to(users_new_user_favorite_path(paste)) do %>
   <div class="my_page_box">
@@ -62,7 +62,7 @@
 <% if @pastes.present? %>
   <%= paginate @pastes %>
 <% end %>
- <%= link_to "マイページへ",users_user_favorite_path(@user_id)	%>
+ <%= link_to "マイページへ",users_user_favorite_path(@user_id), class:"font-color"	%>
  </div>
 
 

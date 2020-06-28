@@ -24,13 +24,22 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   color: gray;
+   color: rgba(0, 0, 0, 0.671);
+   font-family: "Trebuchet MS", "Hiragino kaku Gothic ProN", sans-serif;
+   // font-weight: bold;
+   // text-decoration: none;
 }
 
   @font-face{
    font-family: "mk-font";
    src: asset_url('851MkPOP_002.ttf') format('truetype');
  }
+  @font-face{
+   font-family: "base-font";
+   src: asset_url('f910-shin-comic-2.04.otf') format('truetype');
+ }
+
+
 
 // .box1{
 //    width: 100%; /* 横幅いっぱい */
@@ -73,8 +82,15 @@ header .headline {
 
 .font-color {
    color: gray;
-   font-size: 20px;
-   font-family: "mk-font";
+   font-size: 15px;
+   // font-family: "mk-font";
+   text-decoration: none;
+}
+.font-color:hover {
+   text-decoration: none;
+   background-color: rgba(255, 255, 0, 0.384);
+   border-radius: 6px;
+   color: rgba(26, 26, 25, 0.822);
 }
 
 .user_name{
@@ -134,7 +150,7 @@ footer {
 
  .main, .sidemenu {
    // border: 1px solid #aaa;
-   background-color: #ccc;
+   background-color: rgba(8, 8, 8, 0.13);
 }
 
 .main, .sidemenu{
@@ -163,10 +179,6 @@ footer {
    border: none;
 }
 
-
-
-
-// 
 
 .main-visual {
    width: 100%;
@@ -327,4 +339,18 @@ input {
   background: rgba(0,0,0,0.7);
   z-index: -1;
 }
-
+// ボタンデザイン
+.btn-flat-border {
+   display: inline-block;
+   padding: 0.3em 1em;
+   text-decoration: none;
+   // color: #f9fbfc;
+   border: solid 2px #fdfeff;
+   border-radius: 3px;
+   transition: .4s;
+ }
+ 
+ .btn-flat-border:hover {
+   background: #ffffff;
+   color: white;
+ }

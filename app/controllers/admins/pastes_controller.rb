@@ -56,7 +56,7 @@ class Admins::PastesController < ApplicationController
                 file.close
             else
                  # do endの場合はfile.close必要じゃない
-                File.open(Rails.root.join(row['file']), "rb") do |file|　#Rails.root.join(row['file])は画像があるところまでのpath、"rb"はreedbinaryのこと
+                File.open(Rails.root.join(row['file']), "rb") do |file| #Rails.root.join(row['file])は画像があるところまでのpath、"rb"はreedbinaryのこと
                     Paste.create(
                     genre_id: genre.id,
                     tooth_paste_name: row['tooth_paste_name'],

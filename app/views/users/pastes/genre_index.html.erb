@@ -2,7 +2,10 @@
 <div class="main-visual-content">
     <!-- pタグ（と文字）を追加 -->
     <p class="main-visual-text">
-        総合ランキング一覧
+    ジャンル別ランキング<br>
+    <% if  @genre.present? %>
+    <%= @genre[0].genre_name %>
+    <% end %>
     </p>
     </p>
     <p class="main-visual-name">
@@ -10,8 +13,6 @@
     </p>
 </div>
 </div>
-
- 
 <%= search_form_for(@q,url:users_genre_index_paste_path, method: :get, local:true) do |f| %>
     <h4 class="col-12 mt-2">
         <%= f.label :genre_name, "ジャンル検索", class:"font-color-gray" %>
@@ -23,17 +24,11 @@
     <div class="col-2 mt-1">
         <%= f.submit "検索", class:"btn-flat-border" %>
     </div>
-    <h5 class="col-4 mt-2">
-        <% if  @genre.present? %>
-            ジャンル:<%= @genre[0].genre_name %>
-        <% end %>
-    </h5>
 <% end %>
-
-
+<%= link_to "総合ランキング", users_pastes_path, class:"btn-flat-border font-color" %>
 <div class="container">
     <div class="row">
-    <% @user_favorites.each_with_index do |favorite, i| %>
+    <% @user_favorite_genre.each_with_index do |favorite, i| %>
         <div class="col-3">
             <div class="box_2 m-4">
                 <i class="fas fa-crown"></i>

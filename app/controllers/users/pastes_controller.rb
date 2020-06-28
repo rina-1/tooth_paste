@@ -14,6 +14,15 @@ class Users::PastesController < ApplicationController
       # genre別ランキング
       @genres = Genre.all
       @q = Genre.ransack(params[:q])
+      if params[:q].present?  #検索された場合の処理
+        @genre = @q.result(distinct: true)
+        user_favorite_genre = UserFavorite.joins(:paste).where('pastes.genre_id = ?', @genre.ids).group("tooth_paste_name").order('count_all DESC').count
+        @user_favorite_genre = []   #空の配列を定義しておく
+      end
+    end
+    def genre_index
+      @genres = Genre.all
+      @q = Genre.ransack(params[:q])
       @user_favorite_genre = {}  #eash文に渡すように空の@pastes定義しておく（エラー対策）
       if params[:q].present?  #検索された場合の処理
         @genre = @q.result(distinct: true)
@@ -25,9 +34,8 @@ class Users::PastesController < ApplicationController
             Paste.find_by(tooth_paste_name: user_favorite_genre[0])
           ]
           @user_favorite_genre.push(array)                   #array=[0,1]で取れる
+        end
       end
-    end
-
     end
     def show
         @paste = Paste.find(params[:id])

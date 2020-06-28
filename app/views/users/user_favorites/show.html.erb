@@ -13,7 +13,6 @@
       </p>
   </div>
 </div>
-<div class="user-main-box">
 <% @user_favorites.each do |favorite| %>
   <div class="my_page_box">
     <div class="container">
@@ -37,7 +36,7 @@
               コメント内容:<%= favorite.comment %>
           </div>
           <div class="col-11 offset-1">
-              <%= link_to "Edit", edit_users_user_favorite_path(favorite), class: "btn-sm" %>
+              <%= link_to "Edit", edit_users_user_favorite_path(favorite), class:"btn-flat-border font-color" %>
           </div>
         </div>
       </div>
@@ -45,6 +44,6 @@
  </div>
 <% end %>
 <%= paginate @user_favorites %>
-</div>
+
 
 

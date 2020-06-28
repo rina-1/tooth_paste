@@ -28,4 +28,7 @@ Genre.create!(
 Genre.create!(
     genre_name: '知覚過敏'
 )
+Genre.create!(
+    genre_name: 'オーガニック'
+)
 
