@@ -20,13 +20,13 @@
             <div class="col-3"><%= @recommend.paste.genre.genre_name %></div>
             <div class="col-7"><%= @recommend.paste.tooth_paste_name %></div>
             <div class="col-2"><%= @recommend.paste.price %>円</div>
-            <div class="col-12">
-                <%= form_for(@recommend,url:admins_admin_recommend_path(@recommend), method: :patch) do |f| %>
-                <%= f.label :comment, "コメント編集" %>
-                <%= f.text_area :comment, class:"form-control" %>
-            </div>
         </div>
-        <div class="col-2 center-auto">
+        <%= form_for(@recommend,url:admins_admin_recommend_path(@recommend), method: :patch, local:true) do |f| %>
+        <div class="col-12 m-3">
+            <%= f.label :comment, "コメント編集" %>
+            <%= f.text_area :comment, class:"form-control", style:"width:900px; height:150px;" %>
+        </div>
+        <div class="col-2 center-auto my-2">
             <%= f.submit "変更を保存する", class: "btn-primary ml-5",style:"border-radius: 0.3em" %>
             <% end %>
         </div>

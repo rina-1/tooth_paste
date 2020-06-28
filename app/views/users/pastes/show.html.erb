@@ -6,9 +6,6 @@
 
       </p>
       </p>
-      <p class="main-visual-name">
-          St. Augustine
-      </p>
   </div>
 </div>
 <div class="wrapper clearfix">
@@ -16,7 +13,7 @@
     <div class="container">
       <div class="row">
         <div class="col-3">
-          <%= attachment_image_tag(@paste, :image, size: '100x100') %>
+          <%= attachment_image_tag(@paste, :image, size: '180x180') %>
         </div>
         <div class="col-9 row">
             <div class="col-11 offset-1">
@@ -39,7 +36,7 @@
             <%= attachment_image_tag(@paste, :image, size: '100x100') %>
         </div>
         <%= comment.comment %><br>
-        <%= comment.user.name %>
+        <%= comment.user.name %>さん
     </div>
 <% end %>
 </div>

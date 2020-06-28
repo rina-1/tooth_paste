@@ -6,7 +6,7 @@ class Admins::AdminRecommendsController < ApplicationController
         @pastes = {}
         if params[:q].present?
           @paste = @q.result(distinct: true)
-          @pastes = @paste.page(params[:page]).reverse_order.per(2)
+          @pastes = @paste.page(params[:page]).reverse_order.per(5)
         end
         # ↓ターミナルのログで、入ってるデータを確認することができる
         # logger.debug 'zzzzzzzz'　　　　　　　　　　　　 ←ログで見つけやすいように適当な文字打ってあるだけなのでなくてもok
@@ -26,7 +26,7 @@ class Admins::AdminRecommendsController < ApplicationController
             @pastes = {}
             if params[:q].present?
               @paste = @q.result(distinct: true)
-              @pastes = @paste.page(params[:page]).reverse_order.per(2)
+              @pastes = @paste.page(params[:page]).reverse_order.per(5)
             end
             flash.now[:notice] = "登録に失敗しました、内容を確認して下さい<br>・コメント内容が空ではないですか？<br>・既にお気に入り登録した製品ではないですか?".html_safe
             render :new

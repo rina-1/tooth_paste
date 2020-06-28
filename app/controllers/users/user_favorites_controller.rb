@@ -6,7 +6,7 @@ class Users::UserFavoritesController < ApplicationController
       @pastes = {}  #eash文に渡すように空の@pastes定義しておく（エラー対策）
       if params[:q].present?  #検索された場合の処理
         @paste = @q.result(distinct: true)
-        @pastes = @paste.page(params[:page]).reverse_order.per(2)
+        @pastes = @paste.page(params[:page]).reverse_order.per(5)
       end
       @user_id = current_user.id
     end
@@ -15,21 +15,14 @@ class Users::UserFavoritesController < ApplicationController
       @comment = UserFavorite.new
     end
     def create
-      #comment = current_user.user_favorites.new(user_favorite_params)
       comment = UserFavorite.new(user_favorite_params)
       comment.user_id = current_user.id
       comment.save!
       redirect_to users_user_favorite_path(comment.id)
     end
     def show
-      # @user_favorites = UserFavorite.where(user_id: current_user.id)
-        #  ↑の書き方と↓同じ意味どっちでもokだが、↓の方が文法的にわかりやすいので◎
-      # @user_favorites = current_user.user_favorites.all
        @user_favorites = current_user.user_favorites.all.page(params[:page]).reverse_order
-      # @user_favorites = UserFavorite.all.page(params[:page]).reverse_order
-      # @user_favorite = UserFavorite.all
-      # @favorites = UserFavorite.find.page(params[:page]).reverse_order
-      
+
     end
     def edit
       # @user_favorite = UserFavorite.where(user_id: current_user.id)
@@ -38,10 +31,14 @@ class Users::UserFavoritesController < ApplicationController
     end
     def update
       @user_favorite = current_user.user_favorites.find(params[:id])
-      @user_favorite.save(user_favorite_params)
+      @user_favorite.update(user_favorite_params)
       redirect_to users_user_favorite_path(:id)
     end
     def destroy
+      @user_favorite = current_user.user_favorites.find(params[:id])
+      @user_favorite.destroy
+      # flash[:notice] = "お気に入りを削除しました"
+      redirect_to users_user_favorite_path(:id)
     end
     def index
       # pasteの総合ランキング
