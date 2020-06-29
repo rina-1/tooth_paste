@@ -23,6 +23,13 @@
 どんな歯磨き粉を買えばいいか迷った時参考にして欲しいです
 
 ## 設計書
+https://drive.google.com/file/d/1S4t8ChfE5YKZvTkJ091wJUDFynQ1Qn6f/view?usp=sharing
+https://drive.google.com/file/d/1fiCZtHkHL6li8xE2v5Kaov-CoRZTDU6u/view?usp=sharing
+https://drive.google.com/file/d/1glZngFneuRka6-_eZKe0zZiafMeV88fx/view?usp=sharing
+https://drive.google.com/file/d/1dn_fdmKGU3rOt6_kAux_gg1y8mhr0cT2/view?usp=sharing
+https://drive.google.com/file/d/1V_KeWD-gnLTSrua-a1qZVpVllRPVcMJd/view?usp=sharing
+https://docs.google.com/spreadsheets/d/1bHfC-LinJjLn65JsU_i7q2quZiiM-8nOASq7tpsfJGk/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1jUHxBVdHLGiUZN4Nqj7tLrBHsSb6qAZHBSSOp2W23io/edit?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1qnBR5Ay3lZqvo4N7SUVGCqaPccPw7mOG8gsCtS9-XEQ/edit?usp=sharing
