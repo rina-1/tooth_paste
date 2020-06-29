@@ -13,10 +13,10 @@
 //= require jquery3
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require turbolinks
 
 
 
@@ -36,6 +36,7 @@
       
 // セレクトボックス、プルダウン
 
+$(document).on('turbolinks:load', function(){
 $(window).scroll(function() {
     $(".animation .anm_mod").each(function() {
      const position = $(this).offset().top;
@@ -60,3 +61,4 @@ $(window).scroll(function() {
      return false;
     });
    });
+});
