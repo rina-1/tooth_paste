@@ -1,4 +1,4 @@
-<div class="container" style="margin:0 50px 0;">
+<div class="container">
     <div class="row">
         <div class="col-6 text-left">
                 <%= flash[:notice] %>
@@ -10,48 +10,32 @@
         </div>
     </div>
 </div>
-<div class="container text-center">
-    <%= form_for(@paste,url:admins_pastes_path) do |f| %>
-        <div class="row">
-            <div class="col-6 row">
-                <div class="col-4 text-left"><%= f.label :genre_id,"ジャンル" %></div>
-                <div class="col-8 text-left"><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {}, {class: "form-control"} %></div>
-                <div class="col-4 text-left my-2"><%= f.label :tooth_paste_name,"歯磨き粉の製品名" %></div>
-                <div class="col-8 my-2"><%= f.text_field :tooth_paste_name, class:"form-control" %></div>
-                <div class="col-4 text-left"><%= f.label :price, "値段" %></div>
-                <div class="col-8"><%= f.number_field :price, class:"form-control" %></div>
-                <div class="col-7 text-left my-2"><%= f.attachment_field :image %></div>
-                <div class="col-6 text-left"><%= f.submit "新規登録" %></div>
-            </div>
-    <% end %> 
-            <div class="col-6 row">
-                <div class="col-9 text-left offset-2">csvで歯磨き粉一括登録する</div>
-                <div class="col-9 text-left offset-2">
-                    <%= form_tag import_admins_pastes_path, multipart: true do %>
-                    <%= file_field_tag :file %>
-                </div>
-                <div class="col-9 text-left offset-2"><%= submit_tag "インポート" %></div>
-                    <% end %>
- <%# <%= form_with url: csv_import_admins_pastes_path do |form| %>
-  <%#= form.file_field :file, accept: '.csv' %>
-  <%#= form.submit "アップロード" %>
-
-　<%# if @errors.present? %>
-   <%# @errors.each do |error| %>
-     <%# error[:messages].each do |message| %>
-      <%#= "#{error[:row_num]}行目：#{message}" %>
-     <%# end %>
-   <%# end %>
-　<%# end %>
-<%# end %> 
-
-            </div>
-        </div>
+<div class="over-box">
+    <div class="select-box">
+        <%= form_with(model:@paste,url:admins_pastes_path, local: true) do |f| %>
+                <%= f.label :genre_id,"ジャンル" %>
+                <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {}, {class: "form-control"} %>
+                <%= f.label :tooth_paste_name,"歯磨き粉の製品名" %>
+                <%= f.text_field :tooth_paste_name, class:"form-control" %>
+                <%= f.label :price, "値段" %>
+                <%= f.number_field :price, class:"form-control" %>
+                <%= f.attachment_field :image %>
+                <%= f.submit "新規登録" %>
+        <% end %>
+    </div>
+    <div class="select-box2">
+    <h5>csvで歯磨き粉一括登録する</h5><br>
+                <%= form_with url:import_admins_pastes_path, local: true do |f| %>
+                <%= f.file_field :file %><br>
+                <%= f.submit "インポート" %>
+                <% end %>
+    </div>
 </div>
-     
 
 
-<div class="container " style="margin:30px 50px 0;">
+
+
+<div class="container">
     <div class="row justify-content-center">
         <table class='table'>
             <thead>

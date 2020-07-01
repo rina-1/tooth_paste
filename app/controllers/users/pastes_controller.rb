@@ -15,7 +15,7 @@ class Users::PastesController < ApplicationController
       @genres = Genre.all
       @q = Genre.ransack(params[:q])
       @user_favorite_genre = {}
-      if params[:q].present?  #検索された場合の処理
+      if params[:q] && params[:q][:genre_name_eq].present?  #検索された場合の処理
         @genre = @q.result(distinct: true)
         user_favorite_genre = UserFavorite.joins(:paste).where('pastes.genre_id = ?', @genre.ids).group("tooth_paste_name").order('count_all DESC').count
         @user_favorite_genre = []   #空の配列を定義しておく
@@ -25,7 +25,7 @@ class Users::PastesController < ApplicationController
       @genres = Genre.all
       @q = Genre.ransack(params[:q])
       @user_favorite_genre = {}  #eash文に渡すように空の@pastes定義しておく（エラー対策）
-      if params[:q].present?  #検索された場合の処理
+      if params[:q] && params[:q][:genre_name_eq].present?  #検索された場合の処理
         @genre = @q.result(distinct: true)
         user_favorite_genre = UserFavorite.joins(:paste).where('pastes.genre_id = ?', @genre.ids).group("tooth_paste_name").order('count_all DESC').count
         @user_favorite_genre = []   #空の配列を定義しておく

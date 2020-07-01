@@ -15,6 +15,12 @@ class Admins::GenresController < ApplicationController
             render :index
         end
     end
+    def destroy
+        @genre = Genre.find(params[:id])
+        @genre.destroy
+        flash[:notice] = "Genreを削除しました"
+        redirect_back(fallback_location: admins_genres_path)
+    end
 
     private
 	def genre_params

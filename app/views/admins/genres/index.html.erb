@@ -13,16 +13,17 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-6">
                 <%= form_for(@genre,url:admins_genres_path) do |f| %>
                 <%= f.label :genre_name, "ジャンル" %>
                 <%= f.text_field :genre_name, autocomplete: "off" %>
                 <%= f.submit "追加" %>
                 <% end %>
             </div>
-            <div class="col">
+            <div class="col-6 row">
                 <% @genres.each do |genre| %>
-                <p><%= genre.genre_name %></p>
+                <div class="col-6 my-1"><%= genre.genre_name %></div>
+                <div class="col-6 my-1"><%= link_to "削除", admins_genre_path(genre), method: :delete, class:"btn btn-danger" %></div>
                 <% end %>
             </div>
             <%= paginate @genres %>

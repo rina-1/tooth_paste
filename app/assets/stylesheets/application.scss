@@ -25,7 +25,7 @@
    padding: 0;
    box-sizing: border-box;
    color: rgba(0, 0, 0, 0.671);
-   font-family: "Trebuchet MS", "Hiragino kaku Gothic ProN", sans-serif;
+   font-family: "base-font","Trebuchet MS", "Hiragino kaku Gothic ProN", sans-serif;
    // font-weight: bold;
    // text-decoration: none;
 }
@@ -34,11 +34,15 @@
    font-family: "mk-font";
    src: asset_url('851MkPOP_002.ttf') format('truetype');
  }
-  @font-face{
-   font-family: "base-font";
-   src: asset_url('f910-shin-comic-2.04.otf') format('truetype');
- }
-
+ @font-face{
+  font-family: "base-font";
+  src: asset_url('KGothic.ttf') format('truetype');
+}
+ @font-face{
+  font-family: "logo-font";
+  src: asset_url('NagomiGokubosoGothic-ExtraLight.otf') format('truetype');
+}
+ 
 header {
    width: 100%;
    padding: 15px 0;
@@ -49,7 +53,7 @@ header {
 header .headline {
    font-size: 32px;
    color: gray;
-   font-family: "mk-font";
+   font-family: "logo-font";
    text-align: left;
    list-style: none;   
    // display: inline-block;

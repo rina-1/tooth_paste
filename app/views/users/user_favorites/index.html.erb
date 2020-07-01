@@ -60,6 +60,7 @@
             </h5>
         <% end %>
         <div class="col-12 row mt-4">
+
             <% @user_favorite_genre.each_with_index do |favorite, i| %>
                 <% if i < 3 %>
                     <div class="col">
@@ -78,11 +79,6 @@
             <% end %>
         </div>
         </div>
-        <%# <div class="row">
-            <div class="col-12 text-right"> %>
-              <%#= link_to "ジャンル別ランキングを全部見る", users_genre_index_paste_path, class:"font-color" %>
-           <%# </div>
-        </div> %>
     </section>
     </main>
     <div class="sidemenu">
