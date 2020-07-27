@@ -22,6 +22,9 @@ userおすすめ歯磨き粉選択後
   </div>
 <%# コメント記入用 %>
 <div class="container">
+  <div style="margin-left:50px;">
+    <%= flash[:notice] %>
+  </div>
   <%= form_for(@comment, url:users_user_favorites_path) do |f| %>
     <div class="row text-center m-4">
       <div class="col-12">

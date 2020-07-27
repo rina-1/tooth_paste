@@ -17,8 +17,13 @@ class Users::UserFavoritesController < ApplicationController
     def create
       comment = UserFavorite.new(user_favorite_params)
       comment.user_id = current_user.id
-      comment.save!
-      redirect_to users_user_favorite_path(comment.id)
+      if  comment.save
+          flash[:success] = 'コメントしました'
+          redirect_to users_user_favorite_path(comment.id)
+      else
+        flash[:notice] = 'コメント欄が空です'
+        redirect_back(fallback_location: root_path)
+      end
     end
     def show
        @user_favorites = current_user.user_favorites.all.page(params[:page]).reverse_order
@@ -72,6 +77,7 @@ class Users::UserFavoritesController < ApplicationController
           ]
           @user_favorite_genre.push(array)                   #array=[0,1]で取れる
         end
+
       end
       @user_id = current_user.id
     end
