@@ -48,9 +48,13 @@ class Admins::AdminRecommendsController < ApplicationController
     end
     def destroy
         @recommend = AdminRecommend.find(params[:id])
-        @recommend.destroy
-        flash[:notice] = "お気に入りを削除しました"
-        redirect_back(fallback_location: admins_genres_path)
+        if  @recommend.destroy
+            flash[:notice] = "お気に入りを削除しました"
+            redirect_back(fallback_location: admins_genres_path)
+        else
+            flash[:notice] = "削除出来ませんでした"
+            redirect_back(fallback_location: root_path)
+        end
     end
     def index
         @recommends = AdminRecommend.page(params[:page]).reverse_order

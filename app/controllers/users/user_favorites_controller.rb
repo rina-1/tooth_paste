@@ -36,14 +36,23 @@ class Users::UserFavoritesController < ApplicationController
     end
     def update
       @user_favorite = current_user.user_favorites.find(params[:id])
-      @user_favorite.update(user_favorite_params)
-      redirect_to users_user_favorite_path(:id)
+      if  @user_favorite.update(user_favorite_params)
+          flash[:success] = '更新しました'
+          redirect_to users_user_favorite_path(:id)
+      else
+        flash[:notice] = "変更に失敗しました。もう一度変更し直して下さい<br>・コメント内容が空では無いですか？"
+        redirect_back(fallback_location: root_path)
+      end
     end
     def destroy
       @user_favorite = current_user.user_favorites.find(params[:id])
-      @user_favorite.destroy
-      # flash[:notice] = "お気に入りを削除しました"
-      redirect_to users_user_favorite_path(:id)
+      if  @user_favorite.destroy
+          flash[:success] = "お気に入りを削除しました"
+          redirect_to users_user_favorite_path(:id)
+      else
+          flash[:notice] = '削除に失敗しました'
+          redirect_back(fallback_location: root_path)
+      end
     end
     def index
       # pasteの総合ランキング

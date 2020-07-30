@@ -24,7 +24,8 @@
     </div>
     <div class="col-2 row">
       <div class="col-6"><%= link_to "編集", edit_admins_admin_recommend_path(recommend), class:"btn-sm btn-primary" %></div>
-      <div class="col-6"><%= link_to "削除", admins_admin_recommend_path(recommend), method: :delete, class:"btn btn-danger" %></div>
+      <div class="col-6"><%= link_to "削除", admins_admin_recommend_path(recommend), method: :delete, data: { confirm: "削除しますか？" },
+      class:"btn btn-danger" %></div>
     </div>
   </div>
 <% end %>

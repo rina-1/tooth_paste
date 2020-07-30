@@ -17,9 +17,12 @@ class Admins::GenresController < ApplicationController
     end
     def destroy
         @genre = Genre.find(params[:id])
-        @genre.destroy
-        flash[:notice] = "Genreを削除しました"
-        redirect_back(fallback_location: admins_genres_path)
+        if  @genre.destroy
+            flash[:notice] = "Genreを削除しました"
+            redirect_back(fallback_location: admins_genres_path)
+        else
+            flash.now[:notice] = "Genreを削除出来ませんでした<br>・既に歯磨き粉登録に使用されているGenreは削除することができません".html_safe
+        end
     end
 
     private

@@ -14,7 +14,9 @@
   <nav>
     <ul class="nav-list">
       <h2 class="headline">ToothPasteMania</h2>
-      <h5 class="flash_message_font"><%= flash[:success] %></h5>
+      <h5 class="flash_message_font" style="margin:30px 0 0 40px;">
+        <%= flash[:inquiry_success] %>
+      </h5>
       <% if admin_signed_in? %>
       <li class="nav-list-item">
         <%= link_to "歯磨き粉登録", new_admins_paste_path, class:"font-color" %>
