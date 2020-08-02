@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-3 text-center">
-                <h5 class="bg-info text-white rounded p-1 my-5">adminジャンル一覧・追加</h5>
+                <h5 class="bg-info text-white rounded p-1 my-5">adminジャンル一覧・追加・編集</h5>
             </div>
         </div>
     </div>
@@ -20,13 +20,19 @@
                 <%= f.submit "追加" %>
                 <% end %>
             </div>
-            <div class="col-6 row">
-                <% @genres.each do |genre| %>
-                <div class="col-6 my-1"><%= genre.genre_name %></div>
-                <div class="col-6 my-1"><%= link_to "削除", admins_genre_path(genre), method: :delete, class:"btn btn-danger" %></div>
-                <% end %>
+            <div class="col-6">
+            <% @genres.each do |genre| %>
+                <%= form_for(genre, url:admins_genre_path(genre), method: :patch) do |f| %>
+                
+                <%= f.text_field :genre_name, class:"form-control" %>
+                <%= f.submit "変更する" %></td>    
+                 <% end %>
+                 </tr>
+             <% end %>
             </div>
             <%= paginate @genres %>
         </div>
     </div>
 </div>
+
+         

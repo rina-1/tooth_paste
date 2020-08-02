@@ -15,21 +15,21 @@
 body {
     // background: linear-gradient(-45deg, rgb(17, 2, 236), rgb(128, 208, 228));
     background-image: image-url("background-nurikabe.jpg");
+    background-size: cover;
    }
    
-   .wrap {
+.wrap {
     min-height: 300vh;
     padding-bottom: 50vh;
-   }
-   
-   h1,
-   h2 {
+}
+
+h1,h2 {
     text-align: center;
     color: white;
     font-size: 30px;
-   }
-   
-   .hero {
+}
+
+.hero {
     width: 100%;
     min-height: 600px;
     display: flex;
@@ -39,14 +39,14 @@ body {
     background-size: cover;
     background-attachment: fixed;
     margin-bottom: 120px;
-   
+
     h1 {
-     width: 100%;
-     height: 100%;
-     font-size: 30px;
-     opacity: 0.7;
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        opacity: 0.7;
     }
-   }
+}
 
 .top-font-color {
     color:gray;
@@ -64,22 +64,18 @@ body {
     margin: 0 auto;
 }
 
-// zzzz
-
-   
-   .wrap {
+.wrap {
     min-height: 300vh;
     padding-bottom: 50vh;
-   }
-   
-   h1,
-   h2 {
+}
+
+h1,h2 {
     text-align: center;
     color: white;
     font-size: 25px;
-   }
-   
-   .hero {
+}
+
+.hero {
     width: 100%;
     min-height: 800px;
     display: flex;
@@ -89,81 +85,77 @@ body {
     background-size: cover;
     background-attachment: fixed;
     margin-bottom: 120px;
-   
-
-    
     h1 {
-     width: 100%;
-     height: 100%;
-     font-size: 25px;
-     opacity: 0.7;
+        width: 100%;
+        height: 100%;
+        font-size: 25px;
+        opacity: 0.7;
     }
-   }
-   
-   .animation {
+}
+
+.animation {
     display: flex;
     justify-content: center;
     margin-top: 10vh;
     padding: 2rem 40px;
-   
     .anm_mod {
-     opacity: 0;
-     transform: translate3d(0, 100%, 0);
-     transition: all 1s ease;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     text-align: center;
-     margin: 10px;
-     width: 50%;
-     height: 40vh;
-     border-radius: 10px;
-     font-size: 25px;
-     color: white;
-     text-shadow: 2px 2px 2px rgba(20, 20, 20, 0.5);
-     background: rgba(250, 250, 250, 0.5);
-     box-shadow: 0px 4px 8px rgba(250, 250, 250, 0.3);
-     &.full {
-      width: 100%;
-      font-size: 25px;
-     }
-     &.left {
-      transform: translate3d(-100%, 0, 0);
-     }
-     &.right {
-      transform: translate3d(100%, 0, 0);
-     }
-     &.delay {
-      transition: all 2s ease;
-     }
-     &.fast {
-      transition: all 0.8 ease;
-     }
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+        transition: all 1s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
+        width: 50%;
+        height: 40vh;
+        border-radius: 10px;
+        font-size: 25px;
+        color: white;
+        text-shadow: 2px 2px 2px rgba(20, 20, 20, 0.5);
+        background: rgba(250, 250, 250, 0.5);
+        box-shadow: 0px 4px 8px rgba(250, 250, 250, 0.3);
+            &.full {
+            width: 100%;
+            font-size: 25px;
+            }
+            &.left {
+            transform: translate3d(-100%, 0, 0);
+            }
+            &.right {
+            transform: translate3d(100%, 0, 0);
+            }
+            &.delay {
+            transition: all 2s ease;
+            }
+            &.fast {
+            transition: all 0.8 ease;
+            }
     }
-   }
-   
-   .animation .anm_mod.active {
+}
+
+.animation .anm_mod.active {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-   }
-   
-   .org_to_top {
+}
+
+.org_to_top {
     position: fixed;
     bottom: 20px;
     right: 20px;
     a {
-     text-decoration: none;
-     color: white;
-     font-size: 25px;
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
     }
     .m_to_top {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background-color: rgba(255, 255, 255, 0.5);
-     padding: 30px;
-     width: 40px;
-     height: 30px;
-     box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 30px;
+        width: 40px;
+        height: 30px;
+        box-sizing: border-box;
     }
-   }
+}

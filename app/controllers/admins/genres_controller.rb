@@ -25,6 +25,21 @@ class Admins::GenresController < ApplicationController
         end
     end
 
+    def edit
+        @genre = Genre.find(params[:id])
+    end
+    def update
+        @genre = Genre.find(params[:id])
+        if  @genre.update(genre_params)
+            flash[:notice] = "Genre名を変更しました"
+            redirect_back(fallback_location: root_path)
+        else
+            flash[:notice] = "Genre名の変更ができませんでした"
+            redirect_back(fallback_location: root_path)
+        end
+    end
+
+
     private
 	def genre_params
         params.require(:genre).permit(:genre_name)

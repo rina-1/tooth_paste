@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     end
   authenticated :admin do
     namespace :admins do
-      resources :genres, only:[:index, :create, :destroy]
+      resources :genres, only:[:index, :create, :destroy, :edit, :update]
       resources :pastes, only:[:new, :create, :edit, :update, :destroy] do
          collection { post :import }
         # collection { post :csv_import }
