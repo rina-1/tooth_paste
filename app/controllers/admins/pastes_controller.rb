@@ -15,7 +15,7 @@ class Admins::PastesController < ApplicationController
             flash[:notice] = "登録に失敗しました。入力を確認してください。<br>・製品名記入欄が空ではないですか？<br>・値段記入欄が空ではないですか?<br>・既に登録してある製品ではないですか？".html_safe
             render :new
         end
-    end
+    end    
     def edit
         @paste = Paste.find(params[:id])        
     end
@@ -67,6 +67,11 @@ class Admins::PastesController < ApplicationController
             end     
         end  
         redirect_to new_admins_paste_path
+    end
+
+    def download
+        download_file_name = "public/csv_sample.csv"
+        send_file download_file_name
     end
 
     private

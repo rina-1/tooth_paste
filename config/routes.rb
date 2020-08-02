@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   authenticated :admin do
     namespace :admins do
       resources :genres, only:[:index, :create, :destroy, :edit, :update]
+      get 'download',to:'pastes#download', as: 'download'
       resources :pastes, only:[:new, :create, :edit, :update, :destroy] do
          collection { post :import }
         # collection { post :csv_import }

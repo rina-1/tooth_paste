@@ -25,12 +25,15 @@
     </div>
     <div class="select-box2">
     <h5>csvで歯磨き粉一括登録する</h5><br>
-                <%= form_with url:import_admins_pastes_path, local: true do |f| %>
-                <%= f.file_field :file %><br>
-                <%= f.submit "インポート" %>
-                <% end %>
+        <%= form_with url:import_admins_pastes_path, local: true do |f| %>
+            <%= f.file_field :file, style:"margin:25px 0 20px 0;" %>
+            <%= f.submit "インポート" %>
+        <% end %><br><br>
+        <%= button_to 'csvサンプルファイルのダウンロード', admins_download_path, method: :get, class: "btn btn-default" %>
     </div>
 </div>
+
+
 
 
 <div class="container">
