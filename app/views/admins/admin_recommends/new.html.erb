@@ -1,74 +1,55 @@
 <div class="main-box">
-<div class="container" style="margin:0 50px 0;">
-    <div class="row">
-        <div class="col-6 text-left">
-                <%= flash[:notice] %>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3 text-center">
-            <h5 class="bg-info text-white rounded p-1 mt-5">おすすめ新規登録</h5>
-        </div>
-    </div>
-</div>
+  <div class="container" style="margin:0 50px 0;">
+      <div class="row">
+          <div class="col-6 text-left mb-2">
+                  <%= flash[:notice] %>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-3 text-center">
+              <h5 class="bg-info text-white rounded p-1 mb-4">おすすめ新規登録</h5>
+          </div>
+      </div>
+  </div>
 
 <%# genre_genre_name_eq → モデル名_カラム名_eq（ransackの書き方） %>
-<div class="container">
-<%= search_form_for(@q,url:new_admins_admin_recommend_path, method: :get,  local:true) do |f| %>
-  <div class="row">
-    <div class="col-2"><%= f.label :genre_genre_name, "ジャンル名" %><br>
-      <%= f.collection_select :genre_genre_name_eq, @genres, :genre_name, :genre_name, {}, {class: 'form-control'} %>
-    </div>
-    <div class="col-3"><%= f.label :tooth_paste_name, "Keyword" %><br>
-      <%= f.search_field :tooth_paste_name_cont, class:"form-control" %>
-    </div>
-    <div class="col-5"> <%= f.label :price %><br>
-      <%= f.number_field :price_gteq %>以上〜
-      <%= f.number_field :price_lt %>未満
-    </div>
-    <div class="col-2 text-left"><br><%= f.submit "検索" %></div>
-  </div>
-<% end %>
-</div> 
+  <div class="container">
+    <%= search_form_for(@q,url:new_admins_admin_recommend_path, method: :get, local:true) do |f| %>
+      <div class="row">
+        <div class="col-2"><%= f.label :genre_genre_name, "ジャンル名" %><br>
+          <%= f.collection_select :genre_genre_name_eq, @genres, :genre_name, :genre_name, {}, {class: 'form-control'} %>
+        </div>
+        <div class="col-3"><%= f.label :tooth_paste_name, "Keyword" %><br>
+          <%= f.search_field :tooth_paste_name_cont, class:"form-control" %>
+        </div>
+        <div class="col-5"> <%= f.label :price %><br>
+          <%= f.number_field :price_gteq %>以上〜
+          <%= f.number_field :price_lt %>未満
+        </div>
+        <div class="col-2 text-left"><br><%= f.submit "検索" %></div>
+      </div>
+    <% end %>
+  </div> 
 
-<div class="container">
-<% @pastes.each do |paste| %>
-  <div class="row">
-    <div class="col-2"><%= attachment_image_tag(paste, :image, size: '100x100') %></div>
-    <div class="col-10 row">
-      <div class="col-3"><%= paste.genre.genre_name %></div>
-      <div class="col-6"><%= paste.tooth_paste_name %></div>
-      <div class="col-2"><%= paste.price %>円<br></div>
-      <div class="col-10">
-        <%= form_for(@recommend, url:admins_admin_recommends_path, method: :post) do |f| %>
-        <%= f.label :comment %>
-        <%= f.text_area :comment, class:"form-control", placeholder:"コメントをここに書いてください" %>
-        <%= f.hidden_field :paste_id, :value => paste.id %></div>
-      <div class="col-2"><br><br><%= f.submit "登録する" %><% end %></div>
-    </div>
+  <div class="container">
+    <% @pastes.each do |paste| %>
+      <div class="row my-3">
+        <div class="col-2"><%= attachment_image_tag(paste, :image, size: '150x150') %></div>
+        <div class="col-10 row">
+          <div class="col-3"><%= paste.genre.genre_name %></div>
+          <div class="col-6"><%= paste.tooth_paste_name %></div>
+          <div class="col-2"><%= paste.price %>円<br></div>
+          <div class="col-10">
+            <%= form_for(@recommend, url:admins_admin_recommends_path, method: :post) do |f| %>
+            <%= f.label :comment %>
+            <%= f.text_area :comment, class:"form-control", placeholder:"コメントをここに書いてください" %>
+            <%= f.hidden_field :paste_id, :value => paste.id %></div>
+          <div class="col-2"><br><br><%= f.submit "登録する" %><% end %></div>
+        </div>
+      </div>
+    <% end %>
+    <% if @pastes.present? %>
+      <%= paginate @pastes %>
+    <% end %>
   </div>
-<% end %>
-<% if @pastes.present? %>
-<%= paginate @pastes %>
-<% end %>
 </div>
-</div>
-
-
-
-<%# controller内で定義する　csvファイルを選択→保存ボタン押したとき、csvの内容がテーブルに保存される %>
-<%# CSV.foreach('/path/to/future_gadgets.csv') do |fg|
-  # fgはArrayクラス
-  paste = Paste.new(name: fg[0], price: fg[1])
-  paste.save
-  # puts "[#{fg[0]}] #{fg[1]}: #{fg[2]}"
-end %>
-
-<%# containerコピペ用 %>
-<%# <div class="container">
-  <div class="row">
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
-  </div>
-</div> %>

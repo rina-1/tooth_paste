@@ -1,12 +1,12 @@
 <div class="container" style="margin:0 50px 0;">
     <div class="row">
-        <div class="col-6 text-left">
+        <div class="col-12 text-left">
                 <%= flash[:notice] %>
         </div>
     </div>
     <div class="row">
         <div class="col-3 text-center">
-            <h5 class="bg-info text-white rounded p-1 mt-5">おすすめ編集</h5>
+            <h5 class="bg-info text-white rounded p-1 mt-3 mb-5">おすすめ編集</h5>
         </div>
     </div>
 </div>
@@ -14,19 +14,21 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <%= attachment_image_tag(@recommend.paste, :image, size: '100x100') %>
+            <%= attachment_image_tag(@recommend.paste, :image, size: '150x150') %>
         </div>
-        <div class="col-7 row">
+        <div class="col-9 row">
             <div class="col-3"><%= @recommend.paste.genre.genre_name %></div>
             <div class="col-7"><%= @recommend.paste.tooth_paste_name %></div>
             <div class="col-2"><%= @recommend.paste.price %>円</div>
         </div>
-        <%= form_for(@recommend,url:admins_admin_recommend_path(@recommend), method: :patch, local:true) do |f| %>
+    </div>
+    <div class="row">
         <div class="col-12 m-3">
+            <%= form_for(@recommend,url:admins_admin_recommend_path(@recommend), method: :patch, local:true) do |f| %>
             <%= f.label :comment, "コメント編集" %>
-            <%= f.text_area :comment, class:"form-control", style:"width:900px; height:150px;" %>
+            <%= f.text_area :comment, class:"form-control", style:"width: 90%; height:150px; " %>
         </div>
-        <div class="col-2 center-auto my-2">
+        <div class="col center-auto my-2">
             <%= f.submit "変更を保存する", class: "btn-primary ml-5",style:"border-radius: 0.3em" %>
             <% end %>
         </div>
