@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-3 text-center">
+            <div class="col-4 text-center">
                 <h5 class="bg-info text-white rounded p-1 my-5">adminジャンル一覧・追加・編集</h5>
             </div>
         </div>
@@ -15,20 +15,18 @@
         <div class="row">
             <div class="col-6">
                 <%= form_for(@genre,url:admins_genres_path) do |f| %>
-                <%= f.label :genre_name, "ジャンル" %>
-                <%= f.text_field :genre_name, autocomplete: "off" %>
-                <%= f.submit "追加" %>
+                    <%= f.label :genre_name, "ジャンル" %>
+                    <%= f.text_field :genre_name, autocomplete: "off" %>
+                    <%= f.submit "追加" %>
                 <% end %>
             </div>
             <div class="col-6">
-            <% @genres.each do |genre| %>
-                <%= form_for(genre, url:admins_genre_path(genre), method: :patch) do |f| %>
-                
-                <%= f.text_field :genre_name, class:"form-control" %>
-                <%= f.submit "変更する" %></td>    
-                 <% end %>
-                 </tr>
-             <% end %>
+                <% @genres.each do |genre| %>
+                    <%= form_for(genre, url:admins_genre_path(genre), method: :patch) do |f| %>   
+                        <%= f.text_field :genre_name, class:"form-control my-1" %>
+                        <%= f.submit "変更する", class:"mb-2" %>   
+                    <% end %>
+                <% end %>
             </div>
             <%= paginate @genres %>
         </div>
