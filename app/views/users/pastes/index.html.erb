@@ -1,33 +1,31 @@
 <div class="main-visual">
-<div class="main-visual-content">
-    <!-- pタグ（と文字）を追加 -->
-    <p class="main-visual-text">
-        総合ランキング一覧
-    </p>
-    </p>
+    <div class="main-visual-content">
+        <p class="main-visual-text">
+            総合ランキング一覧
+        </p>
+    </div>
 </div>
-</div>
-
- 
-<%= search_form_for(@q,url:users_genre_index_paste_path, method: :get, local:true) do |f| %>
-    <h4 class="col-12 mt-2">
-        <%= f.label :genre_name, "ジャンル検索", class:"font-color-gray" %>
-    </h4>
-    <div class="row">
-        <div class="col-3 mx-3">
-            <%= f.collection_select :genre_name_eq, @genres, :genre_name, :genre_name,{prompt: ""}, {class: 'form-control ransack-textbox-index'} %>
+<section>
+    <%= search_form_for(@q,url:users_genre_index_paste_path, method: :get, local:true) do |f| %>
+        <h4>
+            <%= f.label :genre_name, "ジャンル検索", class:"font-color-gray", style:"margin:30px;" %>
+        </h4>
+        <div class="genre_container">
+            <div class="genre_box">
+                <%= f.collection_select :genre_name_eq, @genres, :genre_name, :genre_name,{prompt: ""}, {class: 'form-control ransack-textbox-index'} %>
+            </div>
+            <div class="genre_box">
+                <%= f.submit "検索", class:"btn-flat-border" %>
+            </div>
         </div>
-        <div class="col-2 mt-1">
-            <%= f.submit "検索", class:"btn-flat-border" %>
-        </div>
-        <h5 class="col-4 mt-2">
+        <h5>
             <% if  @genre.present? %>
                 ジャンル:<%= @genre[0].genre_name %>
             <% end %>
         </h5>
         </div>
-<% end %>
-
+    <% end %>
+</section>
 
 <div class="container">
     <div class="row">
