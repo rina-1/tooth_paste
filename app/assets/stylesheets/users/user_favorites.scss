@@ -32,13 +32,26 @@
     padding: 0.5em 1em;
     margin:20px auto;
     color: rgb(246, 248, 248);
-    background: #f9fafad7;/*背景色*/
+    background: #f9fafad7;
     border-top: solid 6px #8486864d;
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
     height: 200px;
     width: 80%;
+    display: flex;
 }
 
+.show_box{
+  margin-left: 20px;
+  margin-right: 60px;
+}
+
+.my_page_box ul{
+  list-style-type: none;
+  padding-top: 10px;
+}
+.my_page_box li{
+  padding-top: 20px;
+}
 
 // 検索フォーム
 .ransack_container {  
@@ -154,7 +167,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #f7f4f4ad;
-    border-radius: 10px;         /* 角丸を指定 */
+    border-radius: 10px;
   }
   
   /* beforeで枠線の三角を表現 */

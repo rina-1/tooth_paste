@@ -27,22 +27,21 @@
     <% end %>
 </section>
 
-<div class="container">
-    <div class="row">
-    <% @user_favorites.each_with_index do |favorite, i| %>
-        <div class="col-3">
-            <div class="box_2 m-4">
+<section>
+    <div class="index_container">
+        <% @user_favorites.each_with_index do |favorite, i| %>
+            <div class="index_box">
                 <i class="fas fa-crown"></i>
                 <%= i + 1 %>位<br>
-                <%= attachment_image_tag(favorite[1], :image, size: '150x150') %><br>
+                <%= attachment_image_tag(favorite[1], :image, size: '150x150', style:"margin:10px;") %><br>
                 <%= favorite[1].genre.genre_name %><br>
                 <%= favorite[0].first %><br>
                 <i class="far fa-comment-dots"></i>
                 <%= favorite[0].second %><br>
                 <%= link_to "詳しく見る", users_paste_path(favorite[1].id), class:"font-color" %>
             </div>
-        </div>
-    <% end %>
+        <% end %>
     </div>
-</div>
+</section>
+
 
