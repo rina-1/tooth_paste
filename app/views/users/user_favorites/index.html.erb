@@ -1,118 +1,101 @@
 <div class="main-visual">
     <div class="main-visual-content">
-        <!-- pタグ（と文字）を追加 -->
         <p class="main-visual-text font-color-white">
             toothpaste<br>
             user ranking<br>
             admin ranking
-            
-        </p>
         </p>
     </div>
 </div>
 <div class="wrapper clearfix">
     <main class="main">
-    <section class="container">
-        <div class="row">
-            <h4 class="col-5">総合ランキング</h4>
-            <h5 class="col-6 text-right">
-                <%= link_to "総合ランキングを全部見る", users_pastes_path, class:"font-color" %>
-            </h5>
-            <div class="col-12 row text-center">
-                <% @user_favorites.each_with_index do |favorite, i| %>
-                <% if i < 3 %>
-                    <div class="col">
-                        <div class="box_1">
-                            <i class="fas fa-crown"></i>
-                            <%= i + 1 %>位<br>
-                            <%= attachment_image_tag(favorite[1], :image, size: '200x200') %><br>
-                            <%= favorite[1].genre.genre_name %><br>
-                            <%= favorite[0].first %><br>
-                            <i class="far fa-comment-dots"></i>
-                            <%= favorite[0].second %><br>
-                            <%= link_to "詳しく見る", users_paste_path(favorite[1].id), class:"font-color" %>
-                        </div>
-                    </div>
-                <% end %>
-                <% end %>
-            </div>
-        </div>
+        <section>
+            <h1>総合ランキング</h1>
+            <h2><%= link_to "総合ランキングを全部見る", users_pastes_path, class:"font-color" %></h2>
+                <div class="index_container">
+                    <% @user_favorites.each_with_index do |favorite, i| %>
+                        <% if i < 3 %>
+                            <div class="index_box">
+                                <i class="fas fa-crown"></i>
+                                <%= i + 1 %>位<br>
+                                <%= attachment_image_tag(favorite[1], :image, size: '200x200') %><br>
+                                <%= favorite[1].genre.genre_name %><br>
+                                <%= favorite[0].first %><br>
+                                <i class="far fa-comment-dots"></i>
+                                <%= favorite[0].second %><br>
+                                <%= link_to "詳しく見る", users_paste_path(favorite[1].id), class:"font-color" %>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+        </section>
+        <section>
         <%= search_form_for(@q,url:users_user_favorites_path, method: :get, local:true) do |f| %>
-        <div class="row mt-3">
-            <h4 class="col-6 mt-2">
-                <%= f.label :genre_name, "ジャンル別ランキング", class:"font-color-white" %>
-            </h4>
-            <h5 class="col-5 mt-3 text-right">
-                <%= link_to "ジャンル別ランキングを全部見る", users_genre_index_paste_path, class:"font-color" %>
-            </h5>
-        </div>
-        <div class="row">
-            <div class="col-5">
-                <%= f.collection_select :genre_name_eq, @genres, :genre_name, :genre_name,{prompt: ""}, {class: 'form-control ransack-textbox-index'} %>
-            </div>
-            <div class="col-2 mt-1">
-                <%= f.submit "Search", class:"btn-flat-border" %>
-            </div>
-            <h5 class="col-5 text-right mt-1">
-                <% if  @genre.present? %>
-                    ジャンル:<%= @genre[0].genre_name %>
-                <% end %>
-            </h5>
+            <ul>
+                <li>
+                    <%= f.label :genre_name, "ジャンル別ランキング", class:"font-color-white" %>
+                </li>
+                <li>
+                    <%= link_to "ジャンル別ランキングを全部見る", users_genre_index_paste_path, class:"font-color" %>
+                </li>
+                <div class="select_box">
+                    <%= f.collection_select :genre_name_eq, @genres, :genre_name, :genre_name,{prompt: ""}, {class: 'form-control ransack-textbox-index'} %>
+                </div>
+                <li>
+                    <%= f.submit "Search", class:"btn-flat-border" %>
+                </li>
+            </ul>
+            <% if  @genre.present? %>
+                ジャンル:<%= @genre[0].genre_name %>
+            <% end %>
         <% end %>
-        <div class="col-12 row mt-4">
-
+        <div class="index_container">
             <% @user_favorite_genre.each_with_index do |favorite, i| %>
                 <% if i < 3 %>
-                    <div class="col">
-                        <div class="box_1">
-                            <i class="fas fa-crown"></i>
-                            <%= i + 1 %>位<br>
-                            <%= attachment_image_tag(favorite[1], :image, size: '150x150') %><br>
-                            <%= favorite[1].genre.genre_name %><br>
-                            <%= favorite[0].first %><br>
-                            <i class="far fa-comment-dots"></i>
-                            <%= favorite[0].second %><br>
-                            <%= link_to "詳しく見る", users_paste_path(favorite[1].id), class:"font-color" %>
-                        </div>
+                    <div class="index_box">
+                        <i class="fas fa-crown"></i>
+                        <%= i + 1 %>位<br>
+                        <%= attachment_image_tag(favorite[1], :image, size: '150x150') %><br>
+                        <%= favorite[1].genre.genre_name %><br>
+                        <%= favorite[0].first %><br>
+                        <i class="far fa-comment-dots"></i>
+                        <%= favorite[0].second %><br>
+                        <%= link_to "詳しく見る", users_paste_path(favorite[1].id), class:"font-color" %>
                     </div>
                 <% end %>
             <% end %>
-        </div>
-        </div>
-    </section>
+        </section>
     </main>
     <div class="sidemenu">
-    <section class="popular">
-        <h4 class="sidebar-headline">運営者のおすすめ</h4>
-            <div class="sidebar-contents">
-                <% @admin_recommends.each do |recommend| %>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-6">
-                            <%= attachment_image_tag(recommend.paste, :image, size: '100x100') %></div>
-                        <div class="col-6 row">
-                                <%= recommend.paste.genre.genre_name %>
-                            <div class="col-12">
-                                <%= recommend.paste.tooth_paste_name %>
+        <section class="popular">
+            <h4 class="sidebar-headline">運営者のおすすめ</h4>
+                <div class="sidebar-contents">
+                    <% @admin_recommends.each do |recommend| %>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <%= attachment_image_tag(recommend.paste, :image, size: '100x100') %></div>
+                            <div class="col-6 row">
+                                    <%= recommend.paste.genre.genre_name %>
+                                <div class="col-12">
+                                    <%= recommend.paste.tooth_paste_name %>
+                                </div>
+                                <div class="col-12">
+                                    <%= link_to "詳しく見る", users_paste_path(recommend.paste_id), class:"font-color" %>
+                                </div>
                             </div>
                             <div class="col-12">
-                                <%= link_to "詳しく見る", users_paste_path(recommend.paste_id), class:"font-color" %>
-                            </div>
+                                <div class="admin_tag">
+                                    <%= recommend.comment %>
+                                </div>
+                            </div>     
                         </div>
-                        <div class="col-12">
-                            <div class="admin_tag">
-                                <%= recommend.comment %>
-                            </div>
-                        </div>     
                     </div>
+                    <% end %>
+                    <% if @admin_recommends.present? %>
+                        <%= paginate @admin_recommends %>
+                    <% end %>
                 </div>
-                <% end %>
-                <% if @admin_recommends.present? %>
-                    <%= paginate @admin_recommends %>
-                <% end %>
-            </div>
-    </section>
+        </section>
     </div>
 </div>
-
- 
